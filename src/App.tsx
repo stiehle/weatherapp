@@ -9,7 +9,7 @@ import Site2 from "./routes/site2/Site2";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/weatherapp/",
       // element: <Main />,
       element: <City />,
       errorElement: <ErrorPage />,
