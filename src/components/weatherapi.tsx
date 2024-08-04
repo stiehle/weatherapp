@@ -1,4 +1,4 @@
-const baseURL = "http://api.weatherapi.com/v1";
+const baseURL = "https://api.weatherapi.com/v1";
 const apiKey = import.meta.env.VITE_WEATHER_KEY;
 const lang = "de";
 
