@@ -1,0 +1,23 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   background-color: brown;
+  height: 100%;
+  text-align: center;
+
+  &__header {
+    // background-color: aqua;
+    height: 10%;
+  }
+
+  &__search-bar {
+    // background-color: bisque;
+    height: 10%;
+  }
+
+  &__city-items {
+    // background-color: blueviolet;
+    height: 100%;
+  }
+}

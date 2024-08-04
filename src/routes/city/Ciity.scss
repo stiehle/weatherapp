@@ -1,0 +1,23 @@
+.city {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  //   background-color: brown;
+  height: 100%;
+  text-align: center;
+
+  &__navigation {
+    // background-color: aqua;
+    height: 5%;
+  }
+
+  &__header {
+    // background-color: red;
+    height: 25%;
+  }
+
+  &__information {
+    // background-color: rgb(115, 255, 0);
+    height: 100%;
+  }
+}
