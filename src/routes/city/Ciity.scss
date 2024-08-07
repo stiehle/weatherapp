@@ -2,9 +2,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  //   background-color: brown;
+  // background-color: brown;
   height: 100%;
   text-align: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &__navigation {
     // background-color: aqua;
@@ -13,7 +15,34 @@
 
   &__header {
     // background-color: red;
-    height: 25%;
+    height: 30%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    // border: 2px solid red;
+    border-radius: 30px;
+    margin: 0 auto;
+    width: fit-content;
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+
+    &-location {
+      color: #ff0000;
+      font-size: 1.5rem;
+    }
+
+    &-temp {
+      font-size: 3rem;
+    }
+
+    &-temp::after {
+      content: "°";
+    }
+
+    &-weathertext {
+      color: #cccccc;
+    }
   }
 
   &__information {

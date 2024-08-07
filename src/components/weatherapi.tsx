@@ -2,8 +2,8 @@ const baseURL = "https://api.weatherapi.com/v1";
 const apiKey = import.meta.env.VITE_WEATHER_KEY;
 const lang = "de";
 
-export async function currentWeather(city: string) {
-  const currentWeatherURL = `${baseURL}/current.json?key=${apiKey}&q=${city}&lang=${lang}`;
+export async function forecastWeather(city: string) {
+  const currentWeatherURL = `${baseURL}/forecast.json?key=${apiKey}&q=${city}&lang=${lang}&days=3`;
 
   const response = await fetch(currentWeatherURL, {
     method: "GET",

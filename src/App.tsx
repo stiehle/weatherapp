@@ -15,7 +15,7 @@ function App() {
       errorElement: <ErrorPage />,
     },
     {
-      path: "/main",
+      path: "weatherapp/main",
       element: <Main />,
     },
     {
