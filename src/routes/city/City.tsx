@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { forecastWeather } from "../../components/weatherapi";
 import "./Ciity.scss";
-import { weatherData } from "./weather.types";
+import { weatherData, weatherDataHour } from "./weather.types";
 import { getConditionImagePath } from "../../others/conditions";
 // import { JSX } from "react/jsx-runtime";
 
@@ -49,20 +49,19 @@ export function City() {
   function showCurrentWeatherData() {
     // console.log(currentWeatherData?.name, currentWeatherData?.lat);
     if (weatherData) {
-      console.log(weatherData);
-      console.log(weatherData?.forecast["forecastday"][0].day.maxtemp_c);
-      console.log(weatherData?.forecast["forecastday"][2].hour[21].dewpoint_c);
-      console.log(isDay.current);
+      // console.log(weatherData);
+      // console.log(weatherData?.forecast["forecastday"][0].day.maxtemp_c);
+      // console.log(weatherData?.forecast["forecastday"][2].hour[21].dewpoint_c);
+      // console.log(isDay.current);
 
-      const pathModifiers = getPathModifiers();
       return (
         <>
           <div className="city__header-location">{weatherData["location"].name}</div>
           <div className="city__header-wrapper">
             <img src={weatherData["current"]["condition"].icon} className="icon"></img>
-            <div className={"city__header-temp" + pathModifiers}>{weatherData["current"].temp_c}</div>
+            <div className={"city__header-temp" + getPathModifiers()}>{weatherData["current"].temp_c}</div>
           </div>
-          <div className={"city__header-weathertext" + pathModifiers}>{weatherData["current"]["condition"].text}</div>
+          <div className={"city__header-weathertext" + getPathModifiers()}>{weatherData["current"]["condition"].text}</div>
         </>
       );
     } else {
@@ -76,17 +75,92 @@ export function City() {
   }
 
   function showCityInformation() {
+    // let data: JSX.Element[] = [];
+
+    function getTime(dateTime: string, nowInHour: number) {
+      const time = dateTime.split(" ")[1];
+      const date = dateTime.split(" ")[0];
+      const now = new Date().getDate();
+      // console.log(time, date, now);
+
+      if (Number(time.split(":")[0]) === nowInHour && Number(date.split("-")[2]) === now) {
+        return "Jetzt";
+      } else {
+        return time;
+      }
+    }
+
+    function getDate(dateTime: string) {
+      const time = dateTime.split(" ");
+      // console.log(time[0], time[1]);
+      const date = time[0].split("-");
+      // console.log(date);
+
+      return date[2] + "." + date[1];
+    }
+
+    function getHeaderText() {
+      const now = new Date();
+
+      const date = {
+        year: now.getFullYear(),
+        month: String(now.getMonth() + 1).padStart(2, "0"),
+        day: String(now.getDate()).padStart(2, "0"),
+      };
+      if (weatherData) {
+        const headerText = `Heute ist der: ${date.day}.${date.month}.${date.year}`;
+        const uv = `Der UV Index beträgt: ${weatherData["current"].uv}`;
+        const wind = `Wind bis zu ${weatherData["current"].wind_kph} km/h`;
+        return (
+          <>
+            <p>{headerText}</p>
+            <p>
+              {uv}, {wind}
+            </p>
+          </>
+        );
+      }
+    }
+
     function getForcastHour() {
-      // let data: JSX.Element[] = [];
+      const forecastHours = 48;
+      // const newForcastHours = [];
+
+      const nowInHour = new Date().getHours();
+      // console.log(nowInHour);
+      const allForecastHours: weatherDataHour[] = [];
+      // let hours: {} = {};
 
       if (weatherData) {
-        return weatherData["forecast"].forecastday[0].hour.map((hour) => {
-          console.log(hour);
+        const forecastDays = weatherData["forecast"].forecastday;
+        console.log(forecastDays);
+
+        forecastDays.forEach((element) => {
+          const forecastHours = element.hour;
+
+          forecastHours.forEach((allHours) => {
+            // console.log(allHours);
+            allForecastHours.push(allHours);
+          });
+        });
+
+        // console.log(allForecastHours);
+      }
+      const newForcastHours = allForecastHours.slice(nowInHour, nowInHour + forecastHours);
+      // console.log(newForcastHours);
+
+      // return weatherData["forecast"].forecastday[0].hour.map((hourData) => {
+
+      if (weatherData) {
+        return newForcastHours.map((hourData) => {
+          // console.log(hourData, weatherData["forecast"].forecastday[0].hour);
+          //  <div>{hourData.time.split(" ")[1]}</div>
           return (
-            <div className="city__information-timeline-hour">
-              <div>ABC</div>
-              <img src={hour.condition.icon} className="icon"></img>
-              <div>{hour.temp_c}°</div>
+            <div className="city__information-timeline-hour" key={hourData.time_epoch}>
+              <div className={"city__information-timeline-text" + getPathModifiers()}>{getDate(hourData.time)}</div>
+              <div className={"city__information-timeline-text" + getPathModifiers()}>{getTime(hourData.time, nowInHour)}</div>
+              <img src={hourData.condition.icon} className="icon"></img>
+              <div className={"city__information-timeline-text" + getPathModifiers()}>{hourData.temp_c}°</div>
             </div>
           );
         });
@@ -96,7 +170,9 @@ export function City() {
     return (
       <>
         <div className="city__information-overview">
-          <div className="city__information-header">Header</div>
+          <div className="city__information-header">
+            <div className={"city__information-header-text" + getPathModifiers()}>{getHeaderText()}</div>
+          </div>
           <div className="city__information-timeline">{getForcastHour()}</div>
         </div>
       </>
@@ -111,7 +187,7 @@ export function City() {
       } else isDay.current = false;
 
       const conditionImagePath = getConditionImagePath(conditionCode, !isDay.current);
-      console.log(conditionImagePath, isDay);
+      // console.log(conditionImagePath, isDay);
 
       if (conditionImagePath) {
         return { backgroundImage: `url(${conditionImagePath})` };
