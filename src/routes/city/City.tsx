@@ -6,7 +6,6 @@ import { getConditionImagePath } from "../../others/conditions";
 // import { JSX } from "react/jsx-runtime";
 
 export function City() {
-  // const [currentWeatherData, setCurrentWeatherData] = useState<weatherData>();
   const [weatherData, setWeatherData] = useState<weatherData>();
   const isDay = useRef(true);
 
@@ -16,52 +15,38 @@ export function City() {
 
   async function getForecastWeather() {
     let city = "ehingen";
-    // const { current, location, forecast } = await forecastWeather(city);
-    const data = await forecastWeather(city);
-    // console.log(current, location);
 
-    // setCurrentWeatherData({ current, location, forecast });
-    // console.log(current, location, forecast);
+    const data = await forecastWeather(city);
+
     setWeatherData(data);
     console.log(data);
-    // console.log(currentWeatherData);
-    // return data;
   }
 
-  // async function getCities() {
-  //   const city = "Ehingen";
-  //   const cities = await searchCity(city);
-  //   console.log(cities, cities[0].id);
+  // function getPathModifiers() {
+  //   let pathModifiers = "";
+
+  //   if (isDay.current) {
+  //     pathModifiers = "";
+  //   } else {
+  //     pathModifiers = "--night";
+  //   }
+
+  //   return pathModifiers;
   // }
 
-  function getPathModifiers() {
-    let pathModifiers = "";
-
-    if (isDay.current) {
-      pathModifiers = "";
-    } else {
-      pathModifiers = "--night";
-    }
-
-    return pathModifiers;
-  }
-
   function showCurrentWeatherData() {
-    // console.log(currentWeatherData?.name, currentWeatherData?.lat);
     if (weatherData) {
-      // console.log(weatherData);
-      // console.log(weatherData?.forecast["forecastday"][0].day.maxtemp_c);
-      // console.log(weatherData?.forecast["forecastday"][2].hour[21].dewpoint_c);
-      // console.log(isDay.current);
-
       return (
         <>
           <div className="city__header-location">{weatherData["location"].name}</div>
           <div className="city__header-wrapper">
             <img src={weatherData["current"]["condition"].icon} className="icon"></img>
-            <div className={"city__header-temp" + getPathModifiers()}>{weatherData["current"].temp_c}</div>
+            <div className="city__header-temp">{weatherData["current"].temp_c}</div>
           </div>
-          <div className={"city__header-weathertext" + getPathModifiers()}>{weatherData["current"]["condition"].text}</div>
+          <div className="city__header-weathertext">{weatherData["current"]["condition"].text}</div>
+          <div className="city__header-weathertext">
+            H:{weatherData["forecast"]["forecastday"][0]["day"].maxtemp_c}° T:{weatherData["forecast"]["forecastday"][0]["day"].mintemp_c}°
+          </div>
         </>
       );
     } else {
@@ -71,7 +56,6 @@ export function City() {
         </>
       );
     }
-    // console.log(currentWeatherData);
   }
 
   function showCityInformation() {
@@ -91,10 +75,8 @@ export function City() {
     }
 
     function getDate(dateTime: string) {
-      const time = dateTime.split(" ");
-      // console.log(time[0], time[1]);
-      const date = time[0].split("-");
-      // console.log(date);
+      const seperator = dateTime.split(" ");
+      const date = seperator[0].split("-");
 
       return date[2] + "." + date[1];
     }
@@ -108,9 +90,9 @@ export function City() {
         day: String(now.getDate()).padStart(2, "0"),
       };
       if (weatherData) {
-        const headerText = `Heute ist der: ${date.day}.${date.month}.${date.year}`;
+        const headerText = `Heute ist der: ${date.day}.${date.month}.${date.year}.`;
         const uv = `Der UV Index beträgt: ${weatherData["current"].uv}`;
-        const wind = `Wind bis zu ${weatherData["current"].wind_kph} km/h`;
+        const wind = `Wind bis zu ${weatherData["current"].wind_kph} km/h.`;
         return (
           <>
             <p>{headerText}</p>
@@ -156,24 +138,81 @@ export function City() {
           // console.log(hourData, weatherData["forecast"].forecastday[0].hour);
           //  <div>{hourData.time.split(" ")[1]}</div>
           return (
-            <div className="city__information-timeline-hour" key={hourData.time_epoch}>
-              <div className={"city__information-timeline-text" + getPathModifiers()}>{getDate(hourData.time)}</div>
-              <div className={"city__information-timeline-text" + getPathModifiers()}>{getTime(hourData.time, nowInHour)}</div>
+            <div className="city__information-overview-timeline-hour" key={hourData.time_epoch}>
+              <p>{getDate(hourData.time)}</p>
+              <p>{getTime(hourData.time, nowInHour)}</p>
               <img src={hourData.condition.icon} className="icon"></img>
-              <div className={"city__information-timeline-text" + getPathModifiers()}>{hourData.temp_c}°</div>
+              <p>{hourData.temp_c}°</p>
             </div>
           );
         });
       }
       // return data;
     }
+
+    function getInformationForecastHeader() {
+      if (weatherData) {
+        return "Vorhersage für die nächsten " + `${weatherData["forecast"]["forecastday"].length}` + " Tage";
+      }
+    }
+
+    function getInformationForecastItems() {
+      type items = {
+        id: number;
+        day: string;
+        icon: string;
+      };
+
+      let data: items[] = [];
+
+      if (weatherData) {
+        const forecastDays = weatherData["forecast"].forecastday;
+        console.log(forecastDays);
+        const now = new Date().toLocaleString("de-DE", { weekday: "short" });
+        console.log(now);
+
+        forecastDays.forEach((element, id) => {
+          let shortWeekDay = new Date(element.date).toLocaleString("de-DE", { weekday: "short" });
+          const icon = element.day.condition.icon;
+          console.log(element);
+
+          if (shortWeekDay === now) {
+            shortWeekDay = "Heute";
+          }
+
+          const dayObj = {
+            id: id,
+            day: shortWeekDay,
+            icon: icon,
+          };
+
+          data.push(dayObj);
+        });
+      }
+
+      console.log(data);
+
+      return data.map((day) => {
+        return (
+          <div className="city__information-forecast-items-day" key={day.id}>
+            <p>{day.day}</p>
+            <img src={day.icon} className="icon"></img>
+          </div>
+        );
+      });
+    }
+
     return (
       <>
         <div className="city__information-overview">
-          <div className="city__information-header">
-            <div className={"city__information-header-text" + getPathModifiers()}>{getHeaderText()}</div>
+          <div className="city__information-overview-header">{getHeaderText()}</div>
+          <div className="city__information-overview-timeline">{getForcastHour()}</div>
+        </div>
+        <div className="city__information-forecast">
+          <div className="city__information-forecast-header">
+            <p>{getInformationForecastHeader()}</p>
           </div>
-          <div className="city__information-timeline">{getForcastHour()}</div>
+          <div className="city__information-forecast-items">{getInformationForecastItems()}</div>
         </div>
       </>
     );
@@ -204,7 +243,7 @@ export function City() {
   }
   // <div className="city" style={{ backgroundImage: `url(${getBackgroundImage()})` }}></div>
   return (
-    <div className="city" style={getWeatherBackgroundImage()}>
+    <div className={isDay.current ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
       <div className="city__navigation"></div>
       <div className="city__header">{showCurrentWeatherData()}</div>
       <div className="city__information">{showCityInformation()}</div>
