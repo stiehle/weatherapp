@@ -246,7 +246,7 @@ export function City() {
   // <div className="city" style={{ backgroundImage: `url(${getBackgroundImage()})` }}></div>
   if (weatherData) {
     return (
-      <div className={weatherData.current.is_day ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
+      <div className={weatherData.current.is_day === 1 ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
         <div className="city__navigation"></div>
         <div className="city__header">{showCurrentWeatherData()}</div>
         <div className="city__information">{showCityInformation()}</div>
