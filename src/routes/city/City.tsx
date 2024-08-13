@@ -223,7 +223,7 @@ export function City() {
       const conditionCode = weatherData["current"]["condition"].code;
 
       let isDay: boolean = false;
-      if (weatherData.current.is_day) {
+      if (weatherData.current.is_day === 1) {
         isDay = true;
       }
 
