@@ -36,7 +36,7 @@
 
     &-location {
       color: #ff0000;
-      text-shadow: 2px 2px #524f4f;
+      text-shadow: 1px 1px #524f4f;
       font-size: 1.5rem;
     }
 
@@ -52,7 +52,7 @@
     }
 
     &-temp {
-      text-shadow: 2px 2px #863333;
+      text-shadow: 1px 1px #863333;
 
       &::after {
         content: "°";
@@ -61,7 +61,7 @@
 
     &-weathertext {
       font-size: 1.2rem;
-      text-shadow: 2px 2px #524f4f;
+      text-shadow: 1px 1px #524f4f;
     }
   }
 

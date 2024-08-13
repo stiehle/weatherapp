@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import { forecastWeather } from "../../components/weatherapi";
 import "./Ciity.scss";
 import { weatherData, weatherDataHour } from "./weather.types";
@@ -7,7 +7,7 @@ import { getConditionImagePath } from "../../others/conditions";
 
 export function City() {
   const [weatherData, setWeatherData] = useState<weatherData>();
-  const isDay = useRef(true);
+  // const isDay = useRef(true);
 
   useEffect(() => {
     getForecastWeather();
@@ -115,7 +115,7 @@ export function City() {
 
       if (weatherData) {
         const forecastDays = weatherData["forecast"].forecastday;
-        console.log(forecastDays);
+        // console.log(forecastDays);
 
         forecastDays.forEach((element) => {
           const forecastHours = element.hour;
@@ -167,14 +167,14 @@ export function City() {
 
       if (weatherData) {
         const forecastDays = weatherData["forecast"].forecastday;
-        console.log(forecastDays);
+        // console.log(forecastDays);
         const now = new Date().toLocaleString("de-DE", { weekday: "short" });
-        console.log(now);
+        // console.log(now);
 
         forecastDays.forEach((element, id) => {
           let shortWeekDay = new Date(element.date).toLocaleString("de-DE", { weekday: "short" });
           const icon = element.day.condition.icon;
-          console.log(element);
+          // console.log(element);
 
           if (shortWeekDay === now) {
             shortWeekDay = "Heute";
@@ -190,7 +190,7 @@ export function City() {
         });
       }
 
-      console.log(data);
+      // console.log(data);
 
       return data.map((day) => {
         return (
@@ -221,11 +221,13 @@ export function City() {
   function getWeatherBackgroundImage() {
     if (weatherData) {
       const conditionCode = weatherData["current"]["condition"].code;
-      if (weatherData["current"].is_day === 1) {
-        isDay.current = true;
-      } else isDay.current = false;
 
-      const conditionImagePath = getConditionImagePath(conditionCode, !isDay.current);
+      let isDay: boolean = false;
+      if (weatherData.current.is_day) {
+        isDay = true;
+      }
+
+      const conditionImagePath = getConditionImagePath(conditionCode, !isDay);
       // console.log(conditionImagePath, isDay);
 
       if (conditionImagePath) {
@@ -242,13 +244,15 @@ export function City() {
     return { backgroundImage: `url(${getConditionImagePath})` };
   }
   // <div className="city" style={{ backgroundImage: `url(${getBackgroundImage()})` }}></div>
-  return (
-    <div className={isDay.current ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
-      <div className="city__navigation"></div>
-      <div className="city__header">{showCurrentWeatherData()}</div>
-      <div className="city__information">{showCityInformation()}</div>
-    </div>
-  );
+  if (weatherData) {
+    return (
+      <div className={weatherData.current.is_day ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
+        <div className="city__navigation"></div>
+        <div className="city__header">{showCurrentWeatherData()}</div>
+        <div className="city__information">{showCityInformation()}</div>
+      </div>
+    );
+  }
 }
 
 export default City;
