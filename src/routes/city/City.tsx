@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
-import { forecastWeather } from "../../components/weatherapi";
-import "./Ciity.scss";
+import { forecastWeather } from "../../others/weatherapi";
+import "./City.scss";
 import { weatherData, weatherDataHour } from "./weather.types";
 import { getConditionImagePath } from "../../others/conditions";
 // import { JSX } from "react/jsx-runtime";
@@ -21,18 +21,6 @@ export function City() {
     setWeatherData(data);
     console.log(data);
   }
-
-  // function getPathModifiers() {
-  //   let pathModifiers = "";
-
-  //   if (isDay.current) {
-  //     pathModifiers = "";
-  //   } else {
-  //     pathModifiers = "--night";
-  //   }
-
-  //   return pathModifiers;
-  // }
 
   function showCurrentWeatherData() {
     if (weatherData) {
@@ -59,43 +47,44 @@ export function City() {
   }
 
   function showCityInformation() {
-    // let data: JSX.Element[] = [];
-
-    function getTime(dateTime: string, nowInHour: number) {
-      const time = dateTime.split(" ")[1];
-      const date = dateTime.split(" ")[0];
-      const now = new Date().getDate();
-      // console.log(time, date, now);
-
-      if (Number(time.split(":")[0]) === nowInHour && Number(date.split("-")[2]) === now) {
-        return "Jetzt";
-      } else {
-        return time;
-      }
-    }
-
-    function getDate(dateTime: string) {
+    function getDateAndTime(dateTime: string) {
       const seperator = dateTime.split(" ");
       const date = seperator[0].split("-");
+      const time = seperator[1].split(":");
 
-      return date[2] + "." + date[1];
+      const dateAndTime = {
+        day: date[2],
+        month: date[1],
+        hour: time[0],
+        minute: time[1],
+      };
+
+      return dateAndTime;
+    }
+
+    function getTimelineHour(dateTime: string, localDateTime: string) {
+      const dateTimeTimeline = getDateAndTime(dateTime);
+      const localTime = getDateAndTime(localDateTime);
+      // console.log(dateTimeTimeline, localTime);
+
+      return (
+        <>
+          <p>
+            {dateTimeTimeline.day}.{dateTimeTimeline.month}
+          </p>
+          <p>{localTime.hour === dateTimeTimeline.hour ? "Jetzt" : `${dateTimeTimeline.hour + ":" + dateTimeTimeline.minute}`}</p>
+        </>
+      );
     }
 
     function getHeaderText() {
-      const now = new Date();
-
-      const date = {
-        year: now.getFullYear(),
-        month: String(now.getMonth() + 1).padStart(2, "0"),
-        day: String(now.getDate()).padStart(2, "0"),
-      };
       if (weatherData) {
-        const headerText = `Heute ist der: ${date.day}.${date.month}.${date.year}.`;
+        // const headerText = `Heute ist der: ${date.day}.${date.month}.${date.year}.`;
         const uv = `Der UV Index beträgt: ${weatherData["current"].uv}`;
         const wind = `Wind bis zu ${weatherData["current"].wind_kph} km/h.`;
         return (
           <>
-            <p>{headerText}</p>
+            {/* <p>{headerText}</p> */}
             <p>
               {uv}, {wind}
             </p>
@@ -108,12 +97,14 @@ export function City() {
       const forecastHours = 48;
       // const newForcastHours = [];
 
-      const nowInHour = new Date().getHours();
+      // const nowInHour = new Date().getHours();
+
       // console.log(nowInHour);
       const allForecastHours: weatherDataHour[] = [];
       // let hours: {} = {};
 
       if (weatherData) {
+        // console.log(nowInHour_2);
         const forecastDays = weatherData["forecast"].forecastday;
         // console.log(forecastDays);
 
@@ -128,19 +119,22 @@ export function City() {
 
         // console.log(allForecastHours);
       }
-      const newForcastHours = allForecastHours.slice(nowInHour, nowInHour + forecastHours);
+
       // console.log(newForcastHours);
 
       // return weatherData["forecast"].forecastday[0].hour.map((hourData) => {
 
       if (weatherData) {
+        const nowInHourByLocation = Number(getDateAndTime(weatherData.location.localtime).hour);
+        const newForcastHours = allForecastHours.slice(nowInHourByLocation, nowInHourByLocation + forecastHours);
+        // const newForcastHours2 = allForecastHours;
+
         return newForcastHours.map((hourData) => {
           // console.log(hourData, weatherData["forecast"].forecastday[0].hour);
           //  <div>{hourData.time.split(" ")[1]}</div>
           return (
             <div className="city__information-overview-timeline-hour" key={hourData.time_epoch}>
-              <p>{getDate(hourData.time)}</p>
-              <p>{getTime(hourData.time, nowInHour)}</p>
+              {getTimelineHour(hourData.time, weatherData.location.localtime)}
               <img src={hourData.condition.icon} className="icon"></img>
               <p>{hourData.temp_c}°</p>
             </div>
@@ -167,16 +161,13 @@ export function City() {
 
       if (weatherData) {
         const forecastDays = weatherData["forecast"].forecastday;
-        // console.log(forecastDays);
-        const now = new Date().toLocaleString("de-DE", { weekday: "short" });
-        // console.log(now);
+        const locationNow = new Date(weatherData.location.localtime).getDate();
 
         forecastDays.forEach((element, id) => {
           let shortWeekDay = new Date(element.date).toLocaleString("de-DE", { weekday: "short" });
           const icon = element.day.condition.icon;
-          // console.log(element);
 
-          if (shortWeekDay === now) {
+          if (new Date(element.date).getDate() === locationNow) {
             shortWeekDay = "Heute";
           }
 
@@ -189,8 +180,6 @@ export function City() {
           data.push(dayObj);
         });
       }
-
-      // console.log(data);
 
       return data.map((day) => {
         return (
@@ -237,10 +226,6 @@ export function City() {
       }
     }
 
-    // const image = "partly_cloudy_day.jpg";
-    // // const image = "rain_day.jpg";
-    // const dayOrNight = "day";
-    // const imagePath = `./conditionImages/${dayOrNight}/${image}`;
     return { backgroundImage: `url(${getConditionImagePath})` };
   }
   // <div className="city" style={{ backgroundImage: `url(${getBackgroundImage()})` }}></div>

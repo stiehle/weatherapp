@@ -75,10 +75,10 @@
       height: fit-content;
       width: 90%;
       margin: 0 auto;
-      backdrop-filter: blur(30px);
+      backdrop-filter: blur(20px);
       padding: 1rem;
       border-radius: 30px;
-      margin: 0 auto;
+      margin-bottom: 1rem;
 
       &-header {
         height: fit-content;
@@ -114,7 +114,7 @@
           }
 
           & p:nth-child(1) {
-            color: #d48484;
+            color: #c24f4f;
             font-weight: 800;
           }
         }
@@ -124,10 +124,11 @@
     &-forecast {
       height: fit-content;
       width: 90%;
-      margin: 1rem auto;
-      backdrop-filter: blur(30px);
+      margin: 0 auto;
+      backdrop-filter: blur(20px);
       border-radius: 30px;
       padding: 1rem;
+      margin-bottom: 1rem;
 
       &-header {
         height: fit-content;
