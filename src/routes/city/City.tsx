@@ -3,7 +3,9 @@ import { forecastWeather } from "../../others/weatherapi";
 import "./City.scss";
 import { weatherData, weatherDataHour } from "./weather.types";
 import { getConditionImagePath } from "../../others/conditions";
-// import { JSX } from "react/jsx-runtime";
+import { WeatherContext } from "../../context/WeatherContext";
+// import TestContext from "../../components/TestContext";
+// import TestContext from "../../components/TestContext";
 
 export function City() {
   const [weatherData, setWeatherData] = useState<weatherData>();
@@ -11,12 +13,13 @@ export function City() {
 
   useEffect(() => {
     getForecastWeather();
+    // console.log(weatherData);
   }, []);
 
   async function getForecastWeather() {
-    let city = "ehingen";
+    let city = "stuttgart";
 
-    const data = await forecastWeather(city);
+    const data: weatherData = await forecastWeather(city);
 
     setWeatherData(data);
     console.log(data);
@@ -26,14 +29,14 @@ export function City() {
     if (weatherData) {
       return (
         <>
-          <div className="city__header-location">{weatherData["location"].name}</div>
+          <div className="city__header-location">{weatherData.location.name}</div>
           <div className="city__header-wrapper">
-            <img src={weatherData["current"]["condition"].icon} className="icon"></img>
-            <div className="city__header-temp">{weatherData["current"].temp_c}</div>
+            <img src={weatherData.current.condition.icon} className="icon"></img>
+            <div className="city__header-temp">{weatherData.current.temp_c}</div>
           </div>
-          <div className="city__header-weathertext">{weatherData["current"]["condition"].text}</div>
+          <div className="city__header-weathertext">{weatherData.current.condition.text}</div>
           <div className="city__header-weathertext">
-            H:{weatherData["forecast"]["forecastday"][0]["day"].maxtemp_c}° T:{weatherData["forecast"]["forecastday"][0]["day"].mintemp_c}°
+            H:{weatherData.forecast.forecastday[0].day.maxtemp_c}° T:{weatherData.forecast.forecastday[0].day.mintemp_c}°
           </div>
         </>
       );
@@ -80,8 +83,8 @@ export function City() {
     function getHeaderText() {
       if (weatherData) {
         // const headerText = `Heute ist der: ${date.day}.${date.month}.${date.year}.`;
-        const uv = `Der UV Index beträgt: ${weatherData["current"].uv}`;
-        const wind = `Wind bis zu ${weatherData["current"].wind_kph} km/h.`;
+        const uv = `Der UV Index beträgt: ${weatherData.current.uv}`;
+        const wind = `Wind bis zu ${weatherData.current.wind_kph} km/h.`;
         return (
           <>
             {/* <p>{headerText}</p> */}
@@ -105,7 +108,7 @@ export function City() {
 
       if (weatherData) {
         // console.log(nowInHour_2);
-        const forecastDays = weatherData["forecast"].forecastday;
+        const forecastDays = weatherData.forecast.forecastday;
         // console.log(forecastDays);
 
         forecastDays.forEach((element) => {
@@ -146,7 +149,7 @@ export function City() {
 
     function getInformationForecastHeader() {
       if (weatherData) {
-        return "Vorhersage für die nächsten " + `${weatherData["forecast"]["forecastday"].length}` + " Tage";
+        return "Vorhersage für die nächsten " + `${weatherData.forecast.forecastday.length}` + " Tage";
       }
     }
 
@@ -160,7 +163,7 @@ export function City() {
       let data: items[] = [];
 
       if (weatherData) {
-        const forecastDays = weatherData["forecast"].forecastday;
+        const forecastDays = weatherData.forecast.forecastday;
         const locationNow = new Date(weatherData.location.localtime).getDate();
 
         forecastDays.forEach((element, id) => {
@@ -209,7 +212,7 @@ export function City() {
 
   function getWeatherBackgroundImage() {
     if (weatherData) {
-      const conditionCode = weatherData["current"]["condition"].code;
+      const conditionCode = weatherData.current.condition.code;
 
       let isDay: boolean = false;
       if (weatherData.current.is_day === 1) {
@@ -229,13 +232,16 @@ export function City() {
     return { backgroundImage: `url(${getConditionImagePath})` };
   }
   // <div className="city" style={{ backgroundImage: `url(${getBackgroundImage()})` }}></div>
+
   if (weatherData) {
     return (
-      <div className={weatherData.current.is_day === 1 ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
-        <div className="city__navigation"></div>
-        <div className="city__header">{showCurrentWeatherData()}</div>
-        <div className="city__information">{showCityInformation()}</div>
-      </div>
+      <WeatherContext.Provider value={weatherData}>
+        <div className={weatherData.current.is_day === 1 ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
+          <div className="city__navigation"></div>
+          <div className="city__header">{showCurrentWeatherData()}</div>
+          <div className="city__information">{showCityInformation()}</div>
+        </div>
+      </WeatherContext.Provider>
     );
   }
 }

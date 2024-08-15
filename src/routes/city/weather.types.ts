@@ -1,4 +1,4 @@
-const weatherDataTypes = {
+export const weatherDataTypes = {
   location: {
     name: "Ehingen",
     region: "Baden-Wurttemberg",
