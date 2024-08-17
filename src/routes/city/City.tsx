@@ -4,11 +4,13 @@ import "./City.scss";
 import { weatherData, weatherDataHour } from "./weather.types";
 import { getConditionImagePath } from "../../others/conditions";
 import { WeatherContext } from "../../context/WeatherContext";
+import TestContext from "../../components/TestContext";
 // import TestContext from "../../components/TestContext";
 // import TestContext from "../../components/TestContext";
 
 export function City() {
   const [weatherData, setWeatherData] = useState<weatherData>();
+  console.log(weatherData?.location.name);
   // const isDay = useRef(true);
 
   useEffect(() => {
@@ -235,7 +237,8 @@ export function City() {
 
   if (weatherData) {
     return (
-      <WeatherContext.Provider value={weatherData}>
+      <WeatherContext.Provider value={{ wd: weatherData, setWd: setWeatherData }}>
+        <TestContext />
         <div className={weatherData.current.is_day === 1 ? "city" : "city city--night"} style={getWeatherBackgroundImage()}>
           <div className="city__navigation"></div>
           <div className="city__header">{showCurrentWeatherData()}</div>
