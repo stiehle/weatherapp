@@ -2,10 +2,10 @@ import { createContext } from "react";
 import { weatherData, weatherDataTypes } from "../routes/city/weather.types";
 
 export const WeatherContext = createContext<{
-  wd: weatherData;
+  weatherData: weatherData;
   // setWd: React.Dispatch<weatherData>;
-  setWd: (wd: weatherData) => void;
-}>({ wd: weatherDataTypes, setWd: () => {} });
+  setWeatherData: (weatherData: weatherData) => void;
+}>({ weatherData: weatherDataTypes, setWeatherData: () => {} });
 
 // export const WeatherContext = createContext<{}>({});
 
