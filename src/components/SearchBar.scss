@@ -1,0 +1,37 @@
+.searchbar {
+  //   height: fit-content;
+  //   margin: 1rem 0;
+  //   height: 10%;
+
+  &__wrapper {
+    width: 95%;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  &__input-field {
+    font-size: 1.3rem;
+    border: 1px solid red;
+    // width: 100%;
+    padding: 0.2rem;
+  }
+
+  &__search-window {
+    display: none;
+
+    &--show {
+      display: block;
+      position: absolute;
+      background-color: rgb(119, 109, 96);
+      width: 100%;
+      height: fit-content;
+      top: 36px;
+      // z-index: 1;
+      // border: 12px solid red;
+      box-shadow: 0px 0px 2px 2px rgba(255, 0, 0, 0.5);
+      margin: 0 auto;
+    }
+  }
+}

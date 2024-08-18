@@ -156,10 +156,10 @@ function CityInformation() {
           <div className="city__information-forecast-wrapper">
             <div className="city__information-forecast-astro">
               <p>
-                <FiSunrise /> {day.astro.sunrise}
+                <FiSunrise /> {day.astro.sunrise} Uhr
               </p>
               <p>
-                <FiSunset /> {day.astro.sunset}
+                <FiSunset /> {day.astro.sunset} Uhr
               </p>
             </div>
             <div className="city__information-forecast-temperatur">

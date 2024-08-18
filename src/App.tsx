@@ -4,14 +4,13 @@ import ErrorPage from "./routes/error/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./routes/main/Main";
 import { City } from "./routes/city/City";
-import Site2 from "./routes/site2/Site2";
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/weatherapp/",
-      // element: <Main />,
-      element: <City />,
+      element: <Main />,
+      // element: <City />,
       errorElement: <ErrorPage />,
     },
     {
@@ -19,12 +18,8 @@ function App() {
       element: <Main />,
     },
     {
-      path: "/city",
+      path: "weatherapp/city",
       element: <City />,
-    },
-    {
-      path: "/site2",
-      element: <Site2 />,
     },
   ]);
 

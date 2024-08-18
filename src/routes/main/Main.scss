@@ -2,18 +2,37 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  //   background-color: brown;
   height: 100%;
+  width: 100%;
   text-align: center;
+  // background-color: rgb(27, 62, 97);
+  background-image: url("/public/conditionImages/day/partly_cloudy_day.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 
   &__header {
     // background-color: aqua;
     height: 10%;
   }
 
+  // &__search-bar {
+  //   // display: flex;
+  //   // flex-direction: column;
+  //   // justify-content: center;
+  //   // width: 95%;
+  //   // //   margin: 0 auto;
+  //   // position: relative;
+
+  //   // background-color: bisque;
+
+  //   width: 100%;
+  //   margin: 0 auto;
+  // }
+
   &__search-bar {
+    // margin: 1rem 0;
+    height: 8%;
     // background-color: bisque;
-    height: 10%;
   }
 
   &__city-items {
