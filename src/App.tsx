@@ -14,11 +14,11 @@ function App() {
       errorElement: <ErrorPage />,
     },
     {
-      path: "weatherapp/main",
+      path: "/weatherapp/main",
       element: <Main />,
     },
     {
-      path: "weatherapp/city",
+      path: "/weatherapp/city",
       element: <City />,
     },
   ]);
