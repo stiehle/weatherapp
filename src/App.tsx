@@ -10,18 +10,18 @@ function App() {
       path: "/",
       element: <Main />,
       errorElement: <ErrorPage />,
-      children: [
-        {
-          path: "/main/",
-          element: <Main />,
-        },
-      ],
+      // children: [
+      //   {
+      //     path: "/main/",
+      //     element: <Main />,
+      //   },
+      // ],
     },
     {
       path: "city",
       element: <City />,
     },
-  ],{basename: "/weatherapp/"});
+  ],{basename: "weatherapp"});
 
   //   {
   //     path: "/weatherapp/",
