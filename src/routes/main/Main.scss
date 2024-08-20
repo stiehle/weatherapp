@@ -5,29 +5,15 @@
   height: 100%;
   width: 100%;
   text-align: center;
-  // background-color: rgb(27, 62, 97);
-  background-image: url("/conditionImages/day/partly_cloudy_day.jpg");
-  background-size: cover;
-  background-repeat: no-repeat;
+  background-color: rgb(27, 62, 97);
+  // background-image: url("/conditionImages/day/partly_cloudy_day.jpg");
+  // background-size: cover;
+  // background-repeat: no-repeat;
 
   &__header {
     // background-color: aqua;
-    height: 10%;
+    height: 8%;
   }
-
-  // &__search-bar {
-  //   // display: flex;
-  //   // flex-direction: column;
-  //   // justify-content: center;
-  //   // width: 95%;
-  //   // //   margin: 0 auto;
-  //   // position: relative;
-
-  //   // background-color: bisque;
-
-  //   width: 100%;
-  //   margin: 0 auto;
-  // }
 
   &__search-bar {
     // margin: 1rem 0;
@@ -36,7 +22,14 @@
   }
 
   &__city-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
     // background-color: blueviolet;
     height: 100%;
+    scrollbar-width: none;
+    // overflow-y: scroll;
+    overflow-y: auto;
   }
 }

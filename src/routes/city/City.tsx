@@ -21,7 +21,7 @@ export function City() {
   }, []);
 
   async function getForecastWeather() {
-    let city = "Ehingen";
+    let city = "ehingen";
 
     const data: weatherData = await forecastWeather(city);
 

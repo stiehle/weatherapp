@@ -12,14 +12,10 @@ function App() {
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "/weatherapp/main/",
-          element: <Main />,
+          path: "city",
+          element: <City />,
         },
       ],
-    },
-    {
-      path: "/weatherapp/city/",
-      element: <City />,
     },
   ]);
 
