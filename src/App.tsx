@@ -17,7 +17,7 @@ function App() {
         element: <City />,
       },
     ],
-    { basename: "/weatherapp" }
+    { basename: "/weatherapp/" }
   );
 
   //   {
