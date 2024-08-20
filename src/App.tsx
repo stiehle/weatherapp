@@ -21,7 +21,7 @@ function App() {
       path: "/city",
       element: <City />,
     },
-  ],{basename: "/weatherapp/"});
+  ],{basename: "weatherapp"});
 
   //   {
   //     path: "/weatherapp/",
