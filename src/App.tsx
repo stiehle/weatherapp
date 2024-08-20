@@ -7,10 +7,9 @@ import { City } from "./routes/city/City";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/",
+      path: "/weatherapp",
       element: <Main />,
       errorElement: <ErrorPage />,
-<<<<<<< HEAD
       children: [
         {
           path: "city",
@@ -19,20 +18,6 @@ function App() {
       ],
     },
   ]);
-=======
-      // children: [
-      //   {
-      //     path: "/main/",
-      //     element: <Main />,
-      //   },
-      // ],
-    },
-    {
-      path: "/city/",
-      element: <City />,
-    },
-  ],{basename: "/weatherapp"});
->>>>>>> 11d8fd30e0dc1a538b67288c3e8ede81a9b1ee9e
 
   //   {
   //     path: "/weatherapp/",
