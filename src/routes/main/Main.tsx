@@ -1,6 +1,7 @@
 import "./Main.scss";
 import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
+import CitiesItem from "../../components/CityItems";
 
 export function Main() {
   return (
@@ -10,7 +11,9 @@ export function Main() {
         <div className="main__search-bar">
           <SearchBar />
         </div>
-        <div className="main__city-items">Items</div>
+        <div className="main__city-items">
+          <CitiesItem />
+        </div>
         <Footer />
       </div>
     </>

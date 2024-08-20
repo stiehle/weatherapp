@@ -15,6 +15,7 @@ type city = {
 function SearchBar() {
   const [citiesList, setCitiesList] = useState<city[]>();
   const [showSearchWindow, setShowSearchWindow] = useState(false);
+  const [inputValue, setInputValue] = useState<string>(" ");
 
   async function searchTheCities(city: string) {
     const foundCities = await searchCity(city);
@@ -25,6 +26,8 @@ function SearchBar() {
   function showCitiesList() {
     function selectCity(id: number) {
       console.log("geklickt", id);
+      setInputValue(" ");
+      setShowSearchWindow(false);
     }
 
     if (citiesList) {
@@ -53,6 +56,7 @@ function SearchBar() {
     if (changeEvent.target.value !== "") {
       setShowSearchWindow(true);
       searchTheCities(changeEvent.target.value);
+      setInputValue(changeEvent.target.value);
     } else {
       setShowSearchWindow(false);
     }
@@ -63,7 +67,7 @@ function SearchBar() {
     <div className="searchbar">
       <div className="searchbar__wrapper">
         <label htmlFor="searchbar"></label>
-        <input className="searchbar__input-field" name="searchBar" type="text" onChange={handleInputChange} />
+        <input className="searchbar__input-field" name="searchBar" type="text" onChange={handleInputChange} value={inputValue} />
         {showSearchWindow && <div className="searchbar__search-window--show">{showCitiesList()}</div>}
       </div>
     </div>

@@ -7,21 +7,21 @@ import { City } from "./routes/city/City";
 function App() {
   const router = createBrowserRouter([
     {
-      path: "/weatherapp/",
+      path: "/",
       element: <Main />,
       errorElement: <ErrorPage />,
       children: [
         {
-          path: "/weatherapp/main/",
+          path: "/main/",
           element: <Main />,
         },
       ],
     },
     {
-      path: "/weatherapp/city/",
+      path: "/city",
       element: <City />,
     },
-  ]);
+  ],{basename: "/weatherapp/"});
 
   //   {
   //     path: "/weatherapp/",
