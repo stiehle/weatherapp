@@ -5,17 +5,42 @@ import Main from "./routes/main/Main";
 import { City } from "./routes/city/City";
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: "/weatherapp/",
-      element: <Main />,
-      errorElement: <ErrorPage />,
-    },
-    {
-      path: "/weatherapp/city",
-      element: <City />,
-    },
-  ]);
+  const router = createBrowserRouter(
+    [
+      {
+        path: "/",
+        errorElement: <ErrorPage />,
+        children: [
+          { index: true, element: <Main /> },
+          { path: "city", element: <City /> },
+        ],
+      },
+    ],
+    { basename: "/weatherapp/" }
+  );
+
+  // const router = createBrowserRouter([
+  //   {
+  //     path: "/weatherapp/",
+  //     errorElement: <ErrorPage />,
+  //     children: [
+  //       { index: true, element: <Main /> },
+  //       { path: "city", element: <City /> },
+  //     ],
+  //   },
+  // ]);
+
+  // const router = createBrowserRouter([
+  //     {
+  //       path: "/weatherapp/",
+  //       element: <Main />,
+  //       errorElement: <ErrorPage />,
+  //     },
+  //     {
+  //       path: "/weatherapp/city",
+  //       element: <City />,
+  //     },
+  // ]);
 
   // const router = createBrowserRouter(
   //   [
@@ -30,6 +55,14 @@ function App() {
   //     },
   //   ],
   //   { basename: "/weatherapp/" }
+  // );
+
+  // const router = createBrowserRouter(
+  //   createRoutesFromElements(
+  //     <Route path="/weatherapp" element={<Main />}>
+  //       <Route path="city" element={<City />} />
+  //     </Route>
+  //   )
   // );
 
   //   {
