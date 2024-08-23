@@ -220,3 +220,53 @@ const weatherDataHourTypes = {
   uv: 0,
 };
 export type weatherDataHour = typeof weatherDataHourTypes;
+
+const baseWeatherDataTypes = {
+  location: {
+    name: "Ehingen",
+    region: "Baden-Wurttemberg",
+    country: "Germany",
+    lat: 48.33,
+    lon: 9.72,
+    tz_id: "Europe/Berlin",
+    localtime_epoch: 1722775234,
+    localtime: "2024-08-04 14:40",
+  },
+  current: {
+    last_updated_epoch: 1722774600,
+    last_updated: "2024-08-04 14:30",
+    temp_c: 20.6,
+    temp_f: 69.1,
+    is_day: 1,
+    condition: {
+      text: "Light rain shower",
+      icon: "//cdn.weatherapi.com/weather/64x64/day/353.png",
+      code: 1240,
+    },
+    wind_mph: 8.7,
+    wind_kph: 14.0,
+    wind_degree: 294,
+    wind_dir: "WNW",
+    pressure_mb: 1015.0,
+    pressure_in: 29.97,
+    precip_mm: 0.55,
+    precip_in: 0.02,
+    humidity: 73,
+    cloud: 62,
+    feelslike_c: 20.6,
+    feelslike_f: 69.1,
+    windchill_c: 20.6,
+    windchill_f: 69.1,
+    heatindex_c: 20.6,
+    heatindex_f: 69.1,
+    dewpoint_c: 15.6,
+    dewpoint_f: 60.1,
+    vis_km: 10.0,
+    vis_miles: 6.0,
+    uv: 5.0,
+    gust_mph: 11.2,
+    gust_kph: 18.0,
+  },
+};
+
+export type baseWeatherData = typeof baseWeatherDataTypes;

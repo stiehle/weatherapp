@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import "./CityInformation.scss";
 import { WeatherContext } from "../context/WeatherContext";
-import { weatherDataHour } from "../routes/city/weather.types";
+import { weatherDataHour } from "../utils/weather.types.ts";
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
-import { convertTime } from "../others/convertTime.ts";
+import { convertTime } from "../utils/convertTime.ts";
 
 function CityInformation() {
   const weather = useContext(WeatherContext);

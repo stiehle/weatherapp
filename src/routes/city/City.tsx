@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { forecastWeather } from "../../others/weatherapi";
-import { weatherData } from "./weather.types";
-import { getConditionImagePath } from "../../others/conditions";
+import { forecastWeather } from "../../utils/weatherapi";
+import { weatherData } from "../../utils/weather.types";
+import { getConditionImagePath } from "../../utils/conditions";
 import { WeatherContext } from "../../context/WeatherContext";
 import CityNavigation from "../../components/CityNavigation";
 import CityHeader from "../../components/CityHeader";
@@ -9,11 +9,15 @@ import CityInformation from "../../components/CityInformation";
 import Footer from "../../components/Footer";
 
 import "./City.scss";
+import { useLocation } from "react-router-dom";
 
-export function City() {
+function City() {
   const [weatherData, setWeatherData] = useState<weatherData>();
+  const { state } = useLocation();
   // console.log(weatherData?.location.name);
   // const isDay = useRef(true);
+
+  console.log(state);
 
   useEffect(() => {
     getForecastWeather();
@@ -21,7 +25,9 @@ export function City() {
   }, []);
 
   async function getForecastWeather() {
-    let city = "ehingen";
+    let city = "id:" + state;
+    // console.log(city);
+    //let city = "ehingen";
 
     const data: weatherData = await forecastWeather(city);
 
@@ -47,10 +53,7 @@ export function City() {
         return { backgroundColor: "#220044" };
       }
     }
-
-    return { backgroundImage: `url(${getConditionImagePath})` };
   }
-  // <div className="city" style={{ backgroundImage: `url(${getBackgroundImage()})` }}></div>
 
   if (weatherData) {
     return (

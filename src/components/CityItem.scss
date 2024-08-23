@@ -1,0 +1,50 @@
+.city-item {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  color: #000000;
+
+  &--night {
+    color: #ffffff;
+  }
+
+  &__icon {
+    width: 80px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    // height: 100%;
+    width: 100%;
+    gap: 1rem;
+  }
+
+  &__short-info {
+    color: red;
+  }
+
+  &__city-name-country {
+    display: flex;
+    flex-direction: column;
+    width: 180px;
+    // margin-left: 1rem;
+  }
+
+  & h1,
+  h2,
+  h4 {
+    margin: 0;
+  }
+
+  &__temp {
+    font-size: larger;
+    margin-right: 1rem;
+  }
+}

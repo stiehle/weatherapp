@@ -14,6 +14,18 @@ export async function forecastWeather(city: string) {
   return body;
 }
 
+export async function currentWeather(city: string) {
+  const currentWeatherURL = `${baseURL}/current.json?key=${apiKey}&q=${city}&lang=${lang}&days=3`;
+
+  const response = await fetch(currentWeatherURL, {
+    method: "GET",
+  });
+  const body = await response.json();
+  // console.log(body);
+
+  return body;
+}
+
 export async function searchCity(city: string) {
   const searchCityURL = `${baseURL}/search.json?key=${apiKey}&q=${city}&lang=${lang}`;
 

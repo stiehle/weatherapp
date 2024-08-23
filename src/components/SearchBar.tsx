@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from "react";
 import "./SearchBar.scss";
-import { searchCity } from "../others/weatherapi";
+import { searchCity } from "../utils/weatherapi";
 
 type city = {
   id: number;

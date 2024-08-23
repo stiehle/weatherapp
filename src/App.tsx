@@ -2,7 +2,9 @@ import "./App.css";
 import ErrorPage from "./routes/error/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./routes/main/Main";
-import { City } from "./routes/city/City";
+import City from "./routes/city/City";
+// import Main from "./routes/main/Main";
+// import { City } from "./routes/city/City";
 
 function App() {
   const router = createBrowserRouter(
@@ -12,7 +14,7 @@ function App() {
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Main /> },
-          { path: "/:city", element: <City /> },
+          { path: "city", element: <City /> },
         ],
       },
     ],
