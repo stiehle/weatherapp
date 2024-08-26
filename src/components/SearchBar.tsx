@@ -22,7 +22,7 @@ function SearchBar() {
 
   async function searchTheCities(cityId: string) {
     const foundCities: city[] = await searchCity(cityId);
-    console.log("found", foundCities);
+    // console.log("found", foundCities);
     setCitiesList(foundCities);
   }
 
@@ -92,7 +92,7 @@ function SearchBar() {
           value={inputValue}
           spellCheck="false"
         />
-        {showSearchWindow && <div className="searchbar__search-window--show">{showCitiesList()}</div>}
+        {showSearchWindow && <div className="searchbar__search-window">{showCitiesList()}</div>}
       </div>
     </div>
   );

@@ -20,26 +20,22 @@
   }
 
   &__search-window {
-    display: none;
+    display: block;
+    position: absolute;
+    background-color: #ffffff;
+    width: 100%;
+    height: fit-content;
+    // height: 300px;
+    top: 38px;
+    z-index: 10;
+    // border: 12px solid red;
+    box-shadow: 0px 0px 2px 2px #ff000080;
+    margin: 0 auto;
+    color: #000000;
 
-    &--show {
-      display: block;
-      position: absolute;
-      background-color: #ffffff;
-      width: 100%;
-      height: fit-content;
-      // height: 300px;
-      top: 38px;
-      z-index: 10;
-      // border: 12px solid red;
-      box-shadow: 0px 0px 2px 2px #ff000080;
-      margin: 0 auto;
-      color: #000000;
-
-      & button {
-        margin: 0.2rem;
-        padding: 0.5rem;
-      }
+    & button {
+      margin: 0.2rem;
+      padding: 0.5rem;
     }
   }
 }
