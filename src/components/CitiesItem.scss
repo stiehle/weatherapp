@@ -1,5 +1,23 @@
 .cities-item {
+  position: relative;
   width: 95%;
   min-height: 8rem;
   background-color: rgb(73, 78, 76);
+
+  &__delete {
+    display: none;
+
+    &--show {
+      display: block;
+      position: absolute;
+      right: 0%;
+
+      & button {
+        padding: 5px;
+        background-color: #ff0000;
+        // transform: rotate(15deg);
+        // transform: scaleX(120%);
+      }
+    }
+  }
 }

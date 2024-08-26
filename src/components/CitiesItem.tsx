@@ -1,15 +1,49 @@
-import { useState } from "react";
+import { useContext } from "react";
 import "./CitiesItem.scss";
 import { useNavigate } from "react-router-dom";
 import CityItem from "./CityItem";
+import { CitiesContext } from "../context/CitiesContext";
 
-function CitiesItem() {
-  const [cities] = useState<number[]>([576216, 2618724, 623685, 386789, 267097, 604791, 9000293, 9000433]);
+type mode = {
+  edit: boolean;
+};
+
+function CitiesItem({ edit }: mode) {
+  // const [cities, setCities] = useState<number[]>([576216, 2618724, 623685, 386789, 267097, 604791, 9000293, 9000433]);
   const navigate = useNavigate();
 
-  return cities.map((city) => {
+  const myCities = useContext(CitiesContext);
+
+  function buttonDeleteCity(id: number) {
+    console.log(id);
+
+    const newCities = myCities.cities.filter((city) => {
+      return city !== id;
+    });
+    // console.log(newCities);
+    myCities.setCities(newCities);
+  }
+
+  // onClick={() => {
+  //   !edit && navigate("City", { state: { city, cities } });
+  // }}>
+
+  return myCities.cities.map((city) => {
     return (
-      <div className="cities-item" key={city} onClick={() => navigate("City", { state: city })}>
+      <div
+        key={city}
+        className="cities-item"
+        onClick={() => {
+          !edit && navigate("City", { state: city });
+        }}>
+        <div className={edit ? "cities-item__delete--show" : "cities-item__delete"}>
+          <button
+            onClick={() => {
+              buttonDeleteCity(city);
+            }}>
+            Löschen
+          </button>
+        </div>
         <CityItem id={city} />
       </div>
     );

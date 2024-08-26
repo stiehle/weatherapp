@@ -1,6 +1,7 @@
 import { ChangeEvent, useState } from "react";
 import "./SearchBar.scss";
 import { searchCity } from "../utils/weatherapi";
+import { useNavigate } from "react-router-dom";
 
 type city = {
   id: number;
@@ -17,9 +18,11 @@ function SearchBar() {
   const [showSearchWindow, setShowSearchWindow] = useState(false);
   const [inputValue, setInputValue] = useState<string>(" ");
 
-  async function searchTheCities(city: string) {
-    const foundCities = await searchCity(city);
-    // console.log(foundCities);
+  const navigate = useNavigate();
+
+  async function searchTheCities(cityId: string) {
+    const foundCities: city[] = await searchCity(cityId);
+    console.log("found", foundCities);
     setCitiesList(foundCities);
   }
 
@@ -28,27 +31,37 @@ function SearchBar() {
       console.log("geklickt", id);
       setInputValue(" ");
       setShowSearchWindow(false);
+      navigate("City", { state: id });
     }
 
     if (citiesList) {
-      return citiesList.map((city) => {
-        return (
-          <div key={city.id}>
-            <button
-              onClick={() => {
-                selectCity(city.id);
-              }}>
-              {city.name}, {city.country}
-            </button>
-          </div>
-        );
-      });
-    } else {
-      return (
-        <>
-          <p>Noch keine Daten</p>
-        </>
-      );
+      console.log("Yess", citiesList);
+      if (citiesList.length !== 0) {
+        return citiesList.map((city) => {
+          function getCityURL() {
+            return "http://google.com/search?q=" + city.url;
+          }
+
+          return (
+            <div key={city.id}>
+              <button
+                onClick={() => {
+                  selectCity(city.id);
+                }}>
+                {city.name}, {city.country}
+              </button>
+              <div>
+                <a href={getCityURL()} target="_blank">
+                  search: {city.url}
+                </a>
+              </div>
+            </div>
+          );
+        });
+      } else {
+        console.log("noch keine Daten");
+        return <h3>Noch keine Daten...</h3>;
+      }
     }
   }
 
@@ -67,7 +80,7 @@ function SearchBar() {
     <div className="searchbar">
       <div className="searchbar__wrapper">
         <label htmlFor="searchbar"></label>
-        <input className="searchbar__input-field" name="searchBar" type="text" onChange={handleInputChange} value={inputValue} />
+        <input id="searchbar" className="searchbar__input-field" name="searchbar" type="text" onChange={handleInputChange} value={inputValue} />
         {showSearchWindow && <div className="searchbar__search-window--show">{showCitiesList()}</div>}
       </div>
     </div>

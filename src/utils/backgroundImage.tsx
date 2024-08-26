@@ -2,7 +2,7 @@
 // import { WeatherContext } from "../context/WeatherContext";
 import { getConditionImagePath } from "./conditions";
 
-export function getWeatherBackgroundImageForCity(conditionCode: number, isDay: number) {
+export function getWeatherBackgroundImage(conditionCode: number, isDay: number) {
   // const weather = useContext(WeatherContext);
 
   // const conditionCode = weather.weatherData.current.condition.code;

@@ -11,8 +11,17 @@
   // background-repeat: no-repeat;
 
   &__header {
+    display: inherit;
     // background-color: aqua;
     height: 8%;
+    padding: 1rem;
+    align-items: center;
+    justify-content: space-between;
+
+    & button {
+      border: none;
+      background-color: transparent;
+    }
   }
 
   &__search-bar {

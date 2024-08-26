@@ -46,9 +46,9 @@
         height: fit-content;
         line-height: 1.2rem;
 
-        & p {
-          margin: 0;
-        }
+        // & p {
+        //   margin: 0;
+        // }
 
         & p:nth-child(1) {
           color: #c24f4f;
@@ -133,7 +133,7 @@
 
       & p {
         display: inherit;
-        margin: 0;
+        // margin: 0;
         justify-content: center;
         align-items: center;
         // font-size: 1.3rem;
