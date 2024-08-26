@@ -16,7 +16,7 @@ type city = {
 function SearchBar() {
   const [citiesList, setCitiesList] = useState<city[]>();
   const [showSearchWindow, setShowSearchWindow] = useState(false);
-  const [inputValue, setInputValue] = useState<string>(" ");
+  const [inputValue, setInputValue] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -35,8 +35,8 @@ function SearchBar() {
     }
 
     if (citiesList) {
-      console.log("Yess", citiesList);
-      if (citiesList.length !== 0) {
+      // console.log("Yess", citiesList);
+      if (citiesList.length > 0) {
         return citiesList.map((city) => {
           function getCityURL() {
             return "http://google.com/search?q=" + city.url;
@@ -59,21 +59,24 @@ function SearchBar() {
           );
         });
       } else {
-        console.log("noch keine Daten");
+        // console.log("noch keine Daten");
         return <h3>Noch keine Daten...</h3>;
       }
     }
   }
 
   function handleInputChange(changeEvent: ChangeEvent<HTMLInputElement>) {
+    setInputValue(changeEvent.target.value);
+
+    console.log(changeEvent, changeEvent.target.value);
     if (changeEvent.target.value !== "") {
       setShowSearchWindow(true);
       searchTheCities(changeEvent.target.value);
-      setInputValue(changeEvent.target.value);
+      // setInputValue(changeEvent.target.value);
     } else {
       setShowSearchWindow(false);
     }
-    console.log(changeEvent.target.value);
+    // console.log(changeEvent.target.value);
   }
 
   return (
