@@ -68,7 +68,7 @@ function SearchBar() {
   function handleInputChange(changeEvent: ChangeEvent<HTMLInputElement>) {
     setInputValue(changeEvent.target.value);
 
-    console.log(changeEvent, changeEvent.target.value);
+    // console.log(changeEvent, changeEvent.target.value);
     if (changeEvent.target.value !== "") {
       setShowSearchWindow(true);
       searchTheCities(changeEvent.target.value);
@@ -83,7 +83,15 @@ function SearchBar() {
     <div className="searchbar">
       <div className="searchbar__wrapper">
         <label htmlFor="searchbar"></label>
-        <input id="searchbar" className="searchbar__input-field" name="searchbar" type="text" onChange={handleInputChange} value={inputValue} />
+        <input
+          id="searchbar"
+          className="searchbar__input-field"
+          name="searchbar"
+          type="text"
+          onChange={handleInputChange}
+          value={inputValue}
+          spellCheck="false"
+        />
         {showSearchWindow && <div className="searchbar__search-window--show">{showCitiesList()}</div>}
       </div>
     </div>
