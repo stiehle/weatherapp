@@ -36,14 +36,16 @@ function CitiesItem({ edit }: mode) {
         onClick={() => {
           !edit && navigate("City", { state: city });
         }}>
-        <div className={edit ? "cities-item__delete--show" : "cities-item__delete"}>
-          <button
-            onClick={() => {
-              buttonDeleteCity(city);
-            }}>
-            Löschen
-          </button>
-        </div>
+        {edit && (
+          <div className={"cities-item__delete"}>
+            <button
+              onClick={() => {
+                buttonDeleteCity(city);
+              }}>
+              Löschen
+            </button>
+          </div>
+        )}
         <CityItem id={city} />
       </div>
     );

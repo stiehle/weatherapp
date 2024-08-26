@@ -6,19 +6,13 @@
   z-index: 2;
 
   &__delete {
-    display: none;
+    // display: block;
+    position: absolute;
+    right: 0%;
 
-    &--show {
-      display: block;
-      position: absolute;
-      right: 0%;
-
-      & button {
-        padding: 5px;
-        background-color: #ff0000;
-        // transform: rotate(15deg);
-        // transform: scaleX(120%);
-      }
+    & button {
+      padding: 5px;
+      background-color: #ff0000;
     }
   }
 }

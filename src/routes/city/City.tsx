@@ -30,7 +30,8 @@ function City() {
   }
 
   async function getForecastWeather() {
-    let city = "ehingen";
+    let city = "Ehingen";
+
     if (state) {
       city = "id:" + state;
     }

@@ -49,7 +49,6 @@ function CityItem({ id }: cityItem) {
             <h2>{weatherData.current.temp_c.toFixed(0)}°</h2>
           </div>
         </div>
-        <div className="city-item__short-info">{/* <p>{weatherData.location.localtime}</p> */}</div>
       </div>
     );
   }

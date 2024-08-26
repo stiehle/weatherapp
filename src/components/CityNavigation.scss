@@ -1,4 +1,13 @@
 .city__navigation {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: #ff0000;
+  padding: 0.5rem;
   //   background-color: aqua;
-  height: 30px;
+  // min-height: 30px;
+
+  &-icon {
+    cursor: pointer;
+  }
 }
