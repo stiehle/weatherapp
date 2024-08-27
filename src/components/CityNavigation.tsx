@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { CitiesContext } from "../context/CitiesContext";
+import { setLocalStorage } from "../utils/localStorage";
 
 function CityNavigation() {
   const [stateInCities, setStateInCities] = useState<boolean>(false);
@@ -30,6 +31,11 @@ function CityNavigation() {
 
   function addCityInMyCities() {
     console.log(state);
+    const newCities = myCities.cities;
+    newCities.push(state);
+    console.log(newCities);
+    cityInCities();
+    setLocalStorage(newCities);
   }
 
   return (

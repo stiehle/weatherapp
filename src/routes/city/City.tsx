@@ -30,10 +30,12 @@ function City() {
   }
 
   async function getForecastWeather() {
-    let city = "Ehingen";
+    let city;
 
     if (state) {
       city = "id:" + state;
+    } else {
+      city = "id:" + 576216;
     }
 
     const data: weatherData = await forecastWeather(city);
@@ -54,6 +56,12 @@ function City() {
           <Footer />
         </div>
       </WeatherContext.Provider>
+    );
+  } else {
+    return (
+      <div className="city city--night">
+        <h3>Noch keine Daten...</h3>
+      </div>
     );
   }
 }

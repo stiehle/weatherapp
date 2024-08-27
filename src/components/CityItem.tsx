@@ -51,6 +51,12 @@ function CityItem({ id }: cityItem) {
         </div>
       </div>
     );
+  } else {
+    return (
+      <div className="city-item city-item--night">
+        <h3>Noch keine Daten ...</h3>
+      </div>
+    );
   }
 }
 

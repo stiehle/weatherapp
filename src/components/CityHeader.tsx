@@ -35,7 +35,7 @@ function CityHeader() {
   } else {
     return (
       <>
-        <p>Daten werden geladen...</p>
+        <h3>Daten werden geladen...</h3>
       </>
     );
   }

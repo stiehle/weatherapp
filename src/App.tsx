@@ -5,11 +5,12 @@ import Main from "./routes/main/Main";
 import City from "./routes/city/City";
 import { useState } from "react";
 import { CitiesContext } from "./context/CitiesContext";
+import { getLocalStorage } from "./utils/localStorage";
 // import Main from "./routes/main/Main";
 // import { City } from "./routes/city/City";
 
 function App() {
-  const [cities, setCities] = useState<number[]>([576216, 2618724, 623685, 386789, 267097, 604791, 9000293, 9000433]);
+  const [cities, setCities] = useState<number[]>(getLocalStorage());
 
   const router = createBrowserRouter(
     [
