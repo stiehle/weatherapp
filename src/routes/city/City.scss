@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   // background-color: brown;
   height: 100%;
   text-align: center;
@@ -11,5 +12,9 @@
 
   &--night {
     color: #ffffff;
+  }
+
+  &__center {
+    align-items: center;
   }
 }

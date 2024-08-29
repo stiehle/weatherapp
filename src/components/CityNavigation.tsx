@@ -1,38 +1,39 @@
 import { IconContext } from "react-icons";
 import "./CityNavigation.scss";
 import { CgChevronLeftR } from "react-icons/cg";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
 import { CitiesContext } from "../context/CitiesContext";
 import { setLocalStorage } from "../utils/localStorage";
 
 function CityNavigation() {
-  const [stateInCities, setStateInCities] = useState<boolean>(false);
+  const [itemInCities, setItemInCities] = useState<boolean>(false);
 
   const navigate = useNavigate();
   const myCities = useContext(CitiesContext);
-  const { state } = useLocation();
+  // const { state } = useLocation();
+  const { itemId } = useParams();
 
   useEffect(() => {
     cityInCities();
   }, []);
 
   function cityInCities() {
-    console.log(state, myCities);
+    console.log(itemId, myCities);
     const cityInCities = myCities.cities.find((city) => {
-      return city === state;
+      return city === Number(itemId);
     });
     if (cityInCities) {
       console.log(cityInCities);
-      setStateInCities(true);
+      setItemInCities(true);
     }
   }
 
   function addCityInMyCities() {
-    console.log(state);
+    // console.log(state);
     const newCities = myCities.cities;
-    newCities.push(state);
+    newCities.push(Number(itemId));
     console.log(newCities);
     cityInCities();
     setLocalStorage(newCities);
@@ -46,7 +47,7 @@ function CityNavigation() {
             navigate("/");
           }}
         />
-        {stateInCities ? (
+        {itemInCities ? (
           <FaStar />
         ) : (
           <FaRegStar

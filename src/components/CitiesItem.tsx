@@ -35,7 +35,7 @@ function CitiesItem({ edit }: mode) {
         key={city}
         className="cities-item"
         onClick={() => {
-          !edit && navigate("City", { state: city });
+          !edit && navigate(`city/${city}`);
         }}>
         {edit && (
           <div className={"cities-item__delete"}>

@@ -4,7 +4,7 @@ import { currentWeather } from "../utils/weatherapi";
 import { getWeatherBackgroundImage } from "../utils/backgroundImage";
 import "./CityItem.scss";
 import { convertDateTime } from "../utils/convertDateTime";
-// import { CitiesContext } from "../context/CitiesContext";
+import { InfinitySpin } from "react-loader-spinner";
 
 type cityItem = {
   id: number;
@@ -37,7 +37,7 @@ function CityItem({ id }: cityItem) {
     return (
       <div
         className={weatherData.current.is_day === 1 ? "city-item" : "city-item city-item--night"}
-        style={getWeatherBackgroundImage(weatherData.current.condition.code, weatherData.current.is_day)}>
+        style={{ backgroundImage: `url(${getWeatherBackgroundImage(weatherData.current.condition.code, weatherData.current.is_day)})` }}>
         <div className="city-item__header">
           <div className="city-item__city-name-country">
             <h2>{weatherData.location.name}</h2>
@@ -53,8 +53,8 @@ function CityItem({ id }: cityItem) {
     );
   } else {
     return (
-      <div className="city-item city-item--night">
-        <h3>Noch keine Daten ...</h3>
+      <div className="city-item">
+        <InfinitySpin width="180" color="#ff0000" />
       </div>
     );
   }

@@ -3,6 +3,8 @@ import "./CityHeader.scss";
 import { WeatherContext } from "../context/WeatherContext";
 
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
+import { InfinitySpin } from "react-loader-spinner";
+
 function CityHeader() {
   const weather = useContext(WeatherContext);
 
@@ -34,9 +36,9 @@ function CityHeader() {
     );
   } else {
     return (
-      <>
-        <h3>Daten werden geladen...</h3>
-      </>
+      <div className="city__header">
+        <InfinitySpin width="180" color="#ff0000" />
+      </div>
     );
   }
 }

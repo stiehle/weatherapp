@@ -31,7 +31,8 @@ function SearchBar() {
       console.log("geklickt", id);
       setInputValue(" ");
       setShowSearchWindow(false);
-      navigate("City", { state: id });
+      //navigate("City", { state: id });
+      navigate(`city/${id}`);
     }
 
     if (citiesList) {

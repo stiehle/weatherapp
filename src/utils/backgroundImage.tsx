@@ -15,9 +15,5 @@ export function getWeatherBackgroundImage(conditionCode: number, isDay: number) 
   const conditionImagePath = getConditionImagePath(conditionCode, !day);
   // console.log(conditionImagePath, isDay);
 
-  if (conditionImagePath) {
-    return { backgroundImage: `url(${conditionImagePath})` };
-  } else {
-    return { backgroundColor: "#220044" };
-  }
+  return conditionImagePath;
 }

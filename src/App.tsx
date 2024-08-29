@@ -19,7 +19,7 @@ function App() {
         errorElement: <ErrorPage />,
         children: [
           { index: true, element: <Main /> },
-          { path: "city", element: <City /> },
+          { path: "city", element: <City />, children: [{ path: ":itemId", element: <City /> }] },
         ],
       },
     ],
