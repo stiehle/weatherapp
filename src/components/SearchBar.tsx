@@ -63,8 +63,6 @@ function SearchBar() {
 
   function handleInputChange(changeEvent: ChangeEvent<HTMLInputElement>) {
     setInputValue(changeEvent.target.value);
-    setShowSearchWindow(true);
-    setShowSearchWindow(false);
 
     if (changeEvent.target.value !== "") {
       searchTheCities(changeEvent.target.value);
