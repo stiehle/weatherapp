@@ -6,8 +6,6 @@ import City from "./routes/city/City";
 import { useState } from "react";
 import { CitiesContext } from "./context/CitiesContext";
 import { getLocalStorage } from "./utils/localStorage";
-// import Main from "./routes/main/Main";
-// import { City } from "./routes/city/City";
 
 function App() {
   const [cities, setCities] = useState<number[]>(getLocalStorage());
@@ -25,18 +23,6 @@ function App() {
     ],
     { basename: "/weatherapp/" }
   );
-
-  // const router = createBrowserRouter([
-  //   {
-  //     path: "/weatherapp/",
-  //     element: <Main />,
-  //     errorElement: <ErrorPage />,
-  //   },
-  //   {
-  //     path: "/weatherapp/city",
-  //     element: <City />,
-  //   },
-  // ]);
 
   return (
     <>

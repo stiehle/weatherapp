@@ -1,8 +1,8 @@
+import "./CityItem.scss";
 import { useEffect, useState } from "react";
 import { baseWeatherData } from "../utils/weather.types";
 import { currentWeather } from "../utils/weatherapi";
 import { getWeatherBackgroundImage } from "../utils/backgroundImage";
-import "./CityItem.scss";
 import { convertDateTime } from "../utils/convertDateTime";
 import { InfinitySpin } from "react-loader-spinner";
 
@@ -12,25 +12,17 @@ type cityItem = {
 
 function CityItem({ id }: cityItem) {
   const [weatherData, setWeatherData] = useState<baseWeatherData>();
-  // const mycities = useContext(CitiesContext);
 
   useEffect(() => {
     getCurrentWeather();
-    // console.log(weatherData);
-    // console.log(mycities);
-    //  mycities.setCities([267097, 604791]);
-    // console.log(mycities);
   }, []);
 
   async function getCurrentWeather() {
     let city = "id:" + id;
-    // console.log(city);
-    //let city = "ehingen";
 
     const data: baseWeatherData = await currentWeather(city);
 
     setWeatherData(data);
-    // console.log(data);
   }
 
   if (weatherData) {

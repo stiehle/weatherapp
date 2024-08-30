@@ -1,18 +1,18 @@
+@import "./../styles/colors";
+
 .cities-item {
   position: relative;
   width: 95%;
   min-height: 8rem;
-  background-color: rgb(73, 78, 76);
-  // z-index: 1;
+  background-color: $background-color-cities;
 
   &__delete {
-    // display: block;
     position: absolute;
     right: 0%;
 
     button {
       padding: 5px;
-      background-color: #ff0000;
+      background-color: $background-color-button;
     }
   }
 }

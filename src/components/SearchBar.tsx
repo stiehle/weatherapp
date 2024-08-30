@@ -1,5 +1,5 @@
-import { ChangeEvent, useState } from "react";
 import "./SearchBar.scss";
+import { ChangeEvent, useState } from "react";
 import { searchCity } from "../utils/weatherapi";
 import { useNavigate } from "react-router-dom";
 
@@ -22,21 +22,17 @@ function SearchBar() {
 
   async function searchTheCities(cityId: string) {
     const foundCities: city[] = await searchCity(cityId);
-    // console.log("found", foundCities);
     setCitiesList(foundCities);
   }
 
   function showCitiesList() {
     function selectCity(id: number) {
-      console.log("geklickt", id);
       setInputValue(" ");
       setShowSearchWindow(false);
-      //navigate("City", { state: id });
       navigate(`city/${id}`);
     }
 
     if (citiesList) {
-      // console.log("Yess", citiesList);
       if (citiesList.length > 0) {
         return citiesList.map((city) => {
           function getCityURL() {
@@ -60,7 +56,6 @@ function SearchBar() {
           );
         });
       } else {
-        // console.log("noch keine Daten");
         return <h3>Noch keine Daten...</h3>;
       }
     }
@@ -68,16 +63,15 @@ function SearchBar() {
 
   function handleInputChange(changeEvent: ChangeEvent<HTMLInputElement>) {
     setInputValue(changeEvent.target.value);
+    setShowSearchWindow(true);
+    setShowSearchWindow(false);
 
-    // console.log(changeEvent, changeEvent.target.value);
     if (changeEvent.target.value !== "") {
-      setShowSearchWindow(true);
       searchTheCities(changeEvent.target.value);
-      // setInputValue(changeEvent.target.value);
+      setShowSearchWindow(true);
     } else {
       setShowSearchWindow(false);
     }
-    // console.log(changeEvent.target.value);
   }
 
   return (

@@ -1,3 +1,5 @@
+@import "./../styles/colors";
+
 .searchbar {
   height: fit-content;
 
@@ -12,7 +14,7 @@
 
   &__input-field {
     font-size: 1.3rem;
-    border: 1px solid #ffffff;
+    border: 1px solid $searchbar-border-color;
     padding: 0.3rem;
   }
 
@@ -20,13 +22,13 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    background-color: #ffffff;
+    background-color: $searchbar-background-color;
     width: 100%;
     height: fit-content;
     top: 38px;
     z-index: 3;
-    box-shadow: 0px 0px 2px 2px #ff000080;
-    color: #000000;
+    box-shadow: 0px 0px 2px 2px $searchbar-shadow-color;
+    color: $searchbar-window-font-color;
 
     button {
       margin: 0.2rem;

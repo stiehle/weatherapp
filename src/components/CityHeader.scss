@@ -1,4 +1,6 @@
-.city__header {
+@import "./../styles/colors";
+
+.city-header {
   height: 25%;
   display: flex;
   flex-direction: column;
@@ -6,61 +8,57 @@
   border-radius: 30px;
   margin: 0 auto;
   width: fit-content;
-  // backdrop-filter: blur(20px);
   padding: 1rem;
   font-size: 3rem;
 
-  & p {
+  p {
     font-size: 1rem;
   }
 
-  &-location {
-    color: #ff0000;
-    text-shadow: 1px 1px #524f4f;
+  &__location {
+    color: $header-color-font;
+    text-shadow: 1px 1px $header-color-font-shadow;
     font-size: 2.5rem;
   }
 
-  &-wrapper {
+  &__wrapper {
     display: flex;
     flex-direction: row;
     justify-content: center;
     gap: 0.5rem;
 
-    & .icon {
+    .icon {
       width: 80px;
     }
   }
 
-  &-temp {
-    text-shadow: 1px 1px #863333;
+  &__temp {
+    text-shadow: 1px 1px $header-color-temp-shadow;
 
     &::after {
       content: "°";
     }
   }
 
-  &-weathertext {
-    text-shadow: 1px 1px #524f4f;
+  &__weathertext {
+    text-shadow: 1px 1px $header-color-font-shadow;
 
-    & p {
-      // display: inherit;
-      // margin: 0;
+    p {
       padding: 0.2rem;
       font-size: 1.3rem;
-      // gap: 0.5rem;
     }
   }
 
-  &-weathertemp {
+  &__weathertemp {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 1rem;
-    text-shadow: 1px 1px #524f4f;
+    text-shadow: 1px 1px $header-color-font-shadow;
     padding: 0.5rem;
 
-    & p {
+    p {
       display: inherit;
       margin: 0.2rem;
       font-size: 1.3rem;

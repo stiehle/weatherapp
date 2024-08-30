@@ -1,7 +1,6 @@
-import { useContext } from "react";
 import "./CityHeader.scss";
+import { useContext } from "react";
 import { WeatherContext } from "../context/WeatherContext";
-
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 import { InfinitySpin } from "react-loader-spinner";
 
@@ -11,17 +10,17 @@ function CityHeader() {
   if (weather.weatherData) {
     return (
       <>
-        <div className="city__header">
-          <div className="city__header-location">{weather.weatherData.location.name}</div>
-          <div className="city__header-wrapper">
+        <div className="city-header">
+          <div className="city-header__location">{weather.weatherData.location.name}</div>
+          <div className="city-header__wrapper">
             <img src={weather.weatherData.current.condition.icon} className="icon"></img>
-            <div className="city__header-temp">{weather.weatherData.current.temp_c}</div>
+            <div className="city-header__temp">{weather.weatherData.current.temp_c}</div>
           </div>
-          <div className="city__header-weathertext">
+          <div className="city-header__weathertext">
             <p>{weather.weatherData.current.condition.text}</p>
           </div>
 
-          <div className="city__header-weathertemp">
+          <div className="city-header__weathertemp">
             <p>
               <FaTemperatureHigh />
               {weather.weatherData.forecast.forecastday[0].day.maxtemp_c}
@@ -36,7 +35,7 @@ function CityHeader() {
     );
   } else {
     return (
-      <div className="city__header">
+      <div className="city-header">
         <InfinitySpin width="180" color="#ff0000" />
       </div>
     );

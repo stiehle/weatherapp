@@ -1,5 +1,5 @@
 import "./City.scss";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { forecastWeather } from "../../utils/weatherapi";
 import { weatherData } from "../../utils/weather.types";
 import { WeatherContext } from "../../context/WeatherContext";
@@ -9,41 +9,23 @@ import CityInformation from "../../components/CityInformation";
 import Footer from "../../components/Footer";
 import { useParams } from "react-router-dom";
 import { getWeatherBackgroundImage } from "../../utils/backgroundImage";
-import { CitiesContext } from "../../context/CitiesContext";
 import { InfinitySpin } from "react-loader-spinner";
 
 function City() {
   const [weatherData, setWeatherData] = useState<weatherData>();
-  // const { state } = useLocation();
   const { itemId } = useParams();
-
-  const myCities = useContext(CitiesContext);
 
   useEffect(() => {
     getForecastWeather();
-    showCities();
   }, []);
 
-  function showCities() {
-    // console.log(state);
-    console.log("--", myCities);
-    console.log(itemId);
-  }
-
   async function getForecastWeather() {
-    // let city;
-
-    // if (state) {
-    //   city = "id:" + state;
-    // } else {
-    //   city = "id:" + 576216;
-    // }
     const city = "id:" + String(itemId);
 
     const data: weatherData = await forecastWeather(city);
 
     setWeatherData(data);
-    console.log(data);
+    // console.log(data);
   }
 
   if (weatherData) {

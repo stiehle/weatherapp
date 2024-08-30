@@ -3,14 +3,12 @@ import Footer from "../../components/Footer";
 import SearchBar from "../../components/SearchBar";
 import CitiesItem from "../../components/CitiesItem";
 import { useState } from "react";
+import { WiDayHail } from "react-icons/wi";
 
 function Main() {
-  // const mode = useContext(EditModeContext);
   const [citiesEdit, setCitesEdit] = useState<boolean>(false);
 
   function buttonEdit() {
-    // console.log("Button geklickt");
-    // mode.editMode = true;
     if (citiesEdit) {
       setCitesEdit(false);
     } else setCitesEdit(true);
@@ -19,7 +17,10 @@ function Main() {
     <>
       <div className="main">
         <div className="main__header">
-          <h1>Wetter</h1>
+          <div className="main__header-wrapper">
+            <h1>Wetter</h1>
+            <WiDayHail className="main__header-icon" />
+          </div>
           <button onClick={buttonEdit}>Bearbeiten</button>
         </div>
         <div className="main__search-bar">

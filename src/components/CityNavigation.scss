@@ -1,13 +1,13 @@
-.city__navigation {
+@import "./../styles/colors";
+
+.city-navigation {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color: #ff0000;
+  color: $city-navigation-font-color;
   padding: 0.5rem;
-  //   background-color: aqua;
-  // min-height: 30px;
 
-  &-icon {
+  &__icon {
     cursor: pointer;
   }
 }

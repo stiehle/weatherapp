@@ -1,17 +1,17 @@
+@import "./../../styles/colors";
+
 .city {
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  // background-color: brown;
   height: 100%;
   text-align: center;
   background-size: cover;
   background-repeat: no-repeat;
-  color: #000000;
+  color: $city-primary-color;
 
   &--night {
-    color: #ffffff;
+    color: $city-secondary-color;
   }
 
   &__center {
