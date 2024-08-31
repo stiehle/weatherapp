@@ -10,7 +10,6 @@ import Footer from "../../components/Footer";
 import { useParams } from "react-router-dom";
 import { getWeatherBackgroundImage } from "../../utils/backgroundImage";
 import { InfinitySpin } from "react-loader-spinner";
-import CityAirQuality from "../../components/CityAirQuality";
 
 function City() {
   const [weatherData, setWeatherData] = useState<weatherData>();
