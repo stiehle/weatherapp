@@ -3,7 +3,7 @@ const apiKey = import.meta.env.VITE_WEATHER_KEY;
 const lang = "de";
 
 export async function forecastWeather(city: string) {
-  const currentWeatherURL = `${baseURL}/forecast.json?key=${apiKey}&q=${city}&lang=${lang}&days=3`;
+  const currentWeatherURL = `${baseURL}/forecast.json?key=${apiKey}&q=${city}&lang=${lang}&days=3&aqi=yes`;
 
   const response = await fetch(currentWeatherURL, {
     method: "GET",
@@ -31,6 +31,7 @@ export async function searchCity(city: string) {
     method: "GET",
   });
   const body = await response.json();
+  console.log(body);
 
   return body;
 }

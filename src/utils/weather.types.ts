@@ -43,6 +43,16 @@ export const weatherDataTypes = {
     uv: 5.0,
     gust_mph: 11.2,
     gust_kph: 18.0,
+    air_quality: {
+      co: 233.7,
+      no2: 5.3,
+      o3: 47.9,
+      so2: 0.8,
+      pm2_5: 15.3,
+      pm10: 16.9,
+      "us-epa-index": 1,
+      "gb-defra-index": 2,
+    },
   },
   forecast: {
     forecastday: [

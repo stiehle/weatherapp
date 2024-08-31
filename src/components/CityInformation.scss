@@ -14,7 +14,7 @@
     margin: 0 auto;
     backdrop-filter: blur(20px);
     padding: 1rem;
-    border-radius: 30px;
+    // border-radius: 30px;
     margin-bottom: 1rem;
 
     &-header {
@@ -57,9 +57,9 @@
   &__forecast {
     height: fit-content;
     width: 90%;
-    margin: 0 auto;
+    margin: 1rem auto;
     backdrop-filter: blur(20px);
-    border-radius: 30px;
+    // border-radius: 30px;
     padding: 1rem;
 
     &-header {

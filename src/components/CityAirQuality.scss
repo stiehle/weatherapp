@@ -1,0 +1,50 @@
+@import "./../styles/colors";
+
+.city-airquality {
+  margin: 1rem auto;
+  height: fit-content;
+  width: 90%;
+  backdrop-filter: blur(20px);
+  padding: 1rem;
+
+  &__header {
+    border-bottom: 2px solid $city-airquality-border-color;
+  }
+
+  &__data-wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin: 0.5rem 0;
+  }
+
+  &__data {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 4rem;
+    min-height: 4rem;
+    border: 1px solid $city-airquality-border-color;
+    padding: 0.5rem;
+
+    &-header {
+      font-size: smaller;
+      height: 100%;
+    }
+
+    &-unit {
+      font-size: 0.6rem;
+      align-self: flex-end;
+    }
+
+    &-value {
+      font-weight: 600;
+    }
+  }
+
+  &__description {
+    font-size: 0.6rem;
+  }
+}

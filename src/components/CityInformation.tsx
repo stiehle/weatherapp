@@ -5,6 +5,7 @@ import { weatherDataHour } from "../utils/weather.types.ts";
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 import { convertTime } from "../utils/convertTime.ts";
+import CityAirQuality from "./CityAirQuality.tsx";
 
 function CityInformation() {
   const weather = useContext(WeatherContext);
@@ -166,6 +167,7 @@ function CityInformation() {
           </div>
           <div className="city-information__forecast-items">{getInformationForecastItems()}</div>
         </div>
+        <CityAirQuality />
       </div>
     </>
   );
