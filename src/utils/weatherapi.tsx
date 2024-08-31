@@ -9,7 +9,6 @@ export async function forecastWeather(city: string) {
     method: "GET",
   });
   const body = await response.json();
-  // console.log(body);
 
   return body;
 }
@@ -21,7 +20,6 @@ export async function currentWeather(city: string) {
     method: "GET",
   });
   const body = await response.json();
-  // console.log(body);
 
   return body;
 }
@@ -33,7 +31,6 @@ export async function searchCity(city: string) {
     method: "GET",
   });
   const body = await response.json();
-  // console.log(body);
 
   return body;
 }
