@@ -25,7 +25,6 @@ function City() {
     const data: weatherData = await forecastWeather(city);
 
     setWeatherData(data);
-    console.log(data);
   }
 
   if (weatherData) {

@@ -31,7 +31,6 @@ export async function searchCity(city: string) {
     method: "GET",
   });
   const body = await response.json();
-  console.log(body);
 
   return body;
 }
