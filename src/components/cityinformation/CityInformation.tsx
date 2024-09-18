@@ -1,11 +1,11 @@
 import "./CityInformation.scss";
 import { useContext } from "react";
-import { WeatherContext } from "../context/WeatherContext";
-import { weatherDataHour } from "../utils/weather.types.ts";
+import { WeatherContext } from "../../context/WeatherContext.ts";
+import { weatherDataHour } from "../../utils/weather.types.ts";
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
-import { convertTime } from "../utils/convertTime.ts";
-import CityAirQuality from "./CityAirQuality.tsx";
+import { convertTime } from "../../utils/convertTime.ts";
+import CityAirQuality from "../cityairquality/CityAirQuality.tsx";
 
 function CityInformation() {
   const weather = useContext(WeatherContext);

@@ -16,28 +16,28 @@
     align-items: center;
     justify-content: space-between;
 
-    button {
-      border: none;
-      background-color: transparent;
-    }
+    // button {
+    //   border: none;
+    //   background-color: transparent;
+    // }
+  }
 
-    &-wrapper {
-      position: relative;
-      display: flex;
-      flex-direction: row;
+  &__header-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: row;
 
-      h1 {
-        color: $main-font-color;
-      }
+    h1 {
+      color: $main-font-color;
     }
+  }
 
-    &-icon {
-      position: absolute;
-      height: 70px;
-      width: 70px;
-      left: 170px;
-      color: $main-icon-color;
-    }
+  &__header-icon {
+    position: absolute;
+    height: 70px;
+    width: 70px;
+    left: 170px;
+    color: $main-icon-color;
   }
 
   &__search-bar {

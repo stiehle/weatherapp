@@ -1,9 +1,9 @@
 import "./CityItem.scss";
 import { useEffect, useState } from "react";
-import { baseWeatherData } from "../utils/weather.types";
-import { currentWeather } from "../utils/weatherapi";
-import { getWeatherBackgroundImage } from "../utils/backgroundImage";
-import { convertDateTime } from "../utils/convertDateTime";
+import { baseWeatherData } from "../../utils/weather.types";
+import { currentWeather } from "../../utils/weatherapi";
+import { getWeatherBackgroundImage } from "../../utils/backgroundImage";
+import { convertDateTime } from "../../utils/convertDateTime";
 import { InfinitySpin } from "react-loader-spinner";
 
 type cityItem = {
@@ -21,6 +21,7 @@ function CityItem({ id }: cityItem) {
     let city = "id:" + id;
 
     const data: baseWeatherData = await currentWeather(city);
+    // console.log(data);
 
     setWeatherData(data);
   }

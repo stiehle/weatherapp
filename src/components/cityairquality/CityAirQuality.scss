@@ -1,4 +1,4 @@
-@import "./../styles/colors";
+@import "../../styles/colors";
 
 .city-airquality {
   margin: 1rem auto;
@@ -6,9 +6,11 @@
   width: 90%;
   backdrop-filter: blur(20px);
   padding: 1rem;
+  border-radius: 30px;
 
   &__header {
     border-bottom: 2px solid $city-airquality-border-color;
+    padding: 0.5rem;
   }
 
   &__data-wrapper {
@@ -28,20 +30,20 @@
     min-height: 4rem;
     border: 1px solid $city-airquality-border-color;
     padding: 0.5rem;
+  }
 
-    &-header {
-      font-size: smaller;
-      height: 100%;
-    }
+  &__data-value {
+    font-weight: 600;
+  }
 
-    &-unit {
-      font-size: 0.6rem;
-      align-self: flex-end;
-    }
+  &__data-unit {
+    font-size: 0.6rem;
+    align-self: flex-end;
+  }
 
-    &-value {
-      font-weight: 600;
-    }
+  &__data-header {
+    font-size: smaller;
+    height: 100%;
   }
 
   &__description {

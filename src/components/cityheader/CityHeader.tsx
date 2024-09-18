@@ -1,6 +1,6 @@
 import "./CityHeader.scss";
 import { useContext } from "react";
-import { WeatherContext } from "../context/WeatherContext";
+import { WeatherContext } from "../../context/WeatherContext";
 import { FaTemperatureHigh, FaTemperatureLow } from "react-icons/fa";
 import { InfinitySpin } from "react-loader-spinner";
 

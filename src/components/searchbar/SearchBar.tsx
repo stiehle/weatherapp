@@ -1,6 +1,6 @@
 import "./SearchBar.scss";
 import { ChangeEvent, useState } from "react";
-import { searchCity } from "../utils/weatherapi";
+import { searchCity } from "../../utils/weatherapi";
 import { useNavigate } from "react-router-dom";
 
 type city = {

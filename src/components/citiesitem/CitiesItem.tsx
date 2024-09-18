@@ -1,9 +1,9 @@
 import "./CitiesItem.scss";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import CityItem from "./CityItem";
-import { CitiesContext } from "../context/CitiesContext";
-import { setLocalStorage } from "../utils/localStorage";
+import CityItem from "../cityitem/CityItem";
+import { CitiesContext } from "../../context/CitiesContext";
+import { setLocalStorage } from "../../utils/localStorage";
 
 type mode = {
   edit: boolean;

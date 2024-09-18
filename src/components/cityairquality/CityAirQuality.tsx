@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import "./CityAirQuality.scss";
-import { WeatherContext } from "../context/WeatherContext";
+import { WeatherContext } from "../../context/WeatherContext";
 
 function CityAirQuality() {
   const weather = useContext(WeatherContext);

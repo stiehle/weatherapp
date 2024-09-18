@@ -1,0 +1,14 @@
+.multiButton {
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 0.2rem;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+
+  &__icon {
+    vertical-align: middle;
+    padding-right: 0.2rem;
+  }
+}

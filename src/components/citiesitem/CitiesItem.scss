@@ -1,0 +1,26 @@
+@import "../../styles/colors";
+
+.cities-item {
+  position: relative;
+  width: 95%;
+  background-color: $background-cities-color;
+  cursor: pointer;
+
+  &__delete {
+    position: absolute;
+    right: 0%;
+
+    button {
+      padding: 5px;
+      background-color: $background-button-color;
+      border-radius: 8px;
+      border: 1px solid transparent;
+      padding: 0.3rem;
+      font-size: 0.8rem;
+      font-weight: 500;
+      font-family: inherit;
+      cursor: pointer;
+      color: #ffffff;
+    }
+  }
+}

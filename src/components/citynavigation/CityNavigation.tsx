@@ -4,8 +4,8 @@ import { CgChevronLeftR } from "react-icons/cg";
 import { useNavigate, useParams } from "react-router-dom";
 import { FaRegStar, FaStar } from "react-icons/fa";
 import { useContext, useEffect, useState } from "react";
-import { CitiesContext } from "../context/CitiesContext";
-import { setLocalStorage } from "../utils/localStorage";
+import { CitiesContext } from "../../context/CitiesContext";
+import { setLocalStorage } from "../../utils/localStorage";
 
 function CityNavigation() {
   const [itemInCities, setItemInCities] = useState<boolean>(false);
@@ -42,6 +42,7 @@ function CityNavigation() {
           onClick={() => {
             navigate("/");
           }}
+          className="city-navigation__icon"
         />
         {itemInCities ? (
           <FaStar />
