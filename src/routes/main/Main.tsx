@@ -4,16 +4,12 @@ import SearchBar from "../../components/searchbar/SearchBar";
 import CitiesItem from "../../components/citiesitem/CitiesItem";
 import { useState } from "react";
 import { WiDayHail } from "react-icons/wi";
-import Multibutton from "../../components/multibutton/Multibutton";
+import MultiButton from "../../components/multibutton/MultiButton";
 
 function Main() {
   const [citiesEdit, setCitiesEdit] = useState<boolean>(false);
-
-  // function buttonEdit() {
-  //   if (citiesEdit) {
-  //     setCitesEdit(false);
-  //   } else setCitesEdit(true);
-  // }
+  const [showSearchWindow, setShowSearchWindow] = useState<boolean>(false);
+  const [inputValue, setInputValue] = useState<string>("");
 
   return (
     <>
@@ -24,10 +20,16 @@ function Main() {
             <WiDayHail className="main__header-icon" />
           </div>
           {/* <button onClick={buttonEdit}>Bearbeiten</button> */}
-          <Multibutton editMode={citiesEdit} setCitiesEditMode={setCitiesEdit} buttonText={"Bearbeiten"} />
+          <MultiButton
+            showSearchWindow={showSearchWindow}
+            setShowSearchWindow={setShowSearchWindow}
+            citiesEdit={citiesEdit}
+            setCitiesEditMode={setCitiesEdit}
+            setInputValue={setInputValue}
+          />
         </div>
         <div className="main__search-bar">
-          <SearchBar />
+          <SearchBar showSearchWindow={showSearchWindow} setShowSearchWindow={setShowSearchWindow} inputValue={inputValue} setInputValue={setInputValue} />
         </div>
         <div className="main__cities-items">
           <CitiesItem edit={citiesEdit} />

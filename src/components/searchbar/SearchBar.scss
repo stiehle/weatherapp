@@ -31,8 +31,36 @@
     color: $searchbar-window-font-color;
 
     button {
-      margin: 0.2rem;
-      padding: 0.5rem;
+      // margin: 0.2rem;
+      // padding: 0.5rem;
+      background-color: transparent;
+      border: none;
+      width: 100%;
+      font-size: 1.5rem;
+      color: $searchbar-window-font-color;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: $searchbar-button-hover-color;
+      color: $searchbar-button-hover-font-color;
+    }
+  }
+
+  &__city-link {
+    background-color: transparent;
+
+    .iconButton {
+      font-size: 0.8rem;
+    }
+
+    .iconButton:hover {
+      background-color: $searchbar-iconbutton-hover-background-color;
+      color: $searchbar-iconbutton-hover-font-color;
+
+      .iconButton__icon {
+        color: $searchbar-iconbutton-hover-font-color;
+      }
     }
   }
 }

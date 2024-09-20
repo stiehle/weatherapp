@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import CityItem from "../cityitem/CityItem";
 import { CitiesContext } from "../../context/CitiesContext";
 import { setLocalStorage } from "../../utils/localStorage";
+import IconButton from "../iconbutton/IconButton";
 
 type mode = {
   edit: boolean;
@@ -32,12 +33,19 @@ function CitiesItem({ edit }: mode) {
         }}>
         {edit && (
           <div className="cities-item__delete">
-            <button
+            {/* <button
               onClick={() => {
                 buttonDeleteCity(city);
               }}>
               Löschen
-            </button>
+            </button> */}
+            <IconButton
+              buttonFunction={"trash"}
+              buttonClick={() => {
+                buttonDeleteCity(city);
+              }}
+              buttonText={"Löschen"}
+            />
           </div>
         )}
         <CityItem id={city} />

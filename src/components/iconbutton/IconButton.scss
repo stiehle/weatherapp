@@ -1,0 +1,31 @@
+.iconButton {
+  font-size: 1rem;
+  font-family: inherit;
+  padding: 0.2rem;
+  font-weight: 500;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: #d2d4e9;
+
+  &__icon {
+    vertical-align: middle;
+    padding-right: 0.2rem;
+
+    &--white {
+      color: #d2d4e9;
+    }
+
+    &--red {
+      color: #ff0000;
+    }
+
+    &--green {
+      color: #00ff00;
+    }
+
+    &--black {
+      color: #000000;
+    }
+  }
+}

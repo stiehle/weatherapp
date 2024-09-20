@@ -2,6 +2,7 @@ import "./SearchBar.scss";
 import { ChangeEvent, useState } from "react";
 import { searchCity } from "../../utils/weatherapi";
 import { useNavigate } from "react-router-dom";
+import IconButton from "../iconbutton/IconButton";
 
 type city = {
   id: number;
@@ -13,10 +14,17 @@ type city = {
   url: string;
 };
 
-function SearchBar() {
+type searchWindow = {
+  showSearchWindow: boolean;
+  setShowSearchWindow(showSearchWindow: boolean): void;
+  inputValue: string;
+  setInputValue(inputValue: string): void;
+};
+
+function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInputValue }: searchWindow) {
   const [citiesList, setCitiesList] = useState<city[]>();
-  const [showSearchWindow, setShowSearchWindow] = useState(false);
-  const [inputValue, setInputValue] = useState<string>("");
+  // const [showSearchWindow, setShowSearchWindow] = useState(false);
+  // const [inputValue, setInputValue] = useState<string>("");
 
   const navigate = useNavigate();
 
@@ -47,10 +55,17 @@ function SearchBar() {
                 }}>
                 {city.name}, {city.country}
               </button>
-              <div>
-                <a href={getCityURL()} target="_blank">
-                  search: {city.url}
-                </a>
+              <div className="searchbar__city-link">
+                {/* <a href={getCityURL()} target="_blank"> */}
+
+                <IconButton
+                  buttonFunction={"link"}
+                  buttonClick={() => {
+                    open(getCityURL());
+                  }}
+                  buttonText={city.url}
+                />
+                {/* search: {city.url} */}
               </div>
             </div>
           );
