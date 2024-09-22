@@ -143,6 +143,7 @@ export const weatherDataTypes = {
 };
 
 export type weatherData = typeof weatherDataTypes;
+export type airQuality = typeof weatherDataTypes.current.air_quality;
 
 const weatherDataHourTypes = {
   time_epoch: 1722722400,

@@ -21,7 +21,7 @@ function CityItem({ id }: cityItem) {
     let city = "id:" + id;
 
     const data: baseWeatherData = await currentWeather(city);
-    // console.log(data);
+    console.log(data);
 
     setWeatherData(data);
   }

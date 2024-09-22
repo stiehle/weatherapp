@@ -3,7 +3,8 @@
 .cities-item {
   position: relative;
   width: 95%;
-  background-color: $background-cities-color;
+  background-color: $cities-background-color;
+  text-shadow: 1px 1px 8px $cities-item-font-shadow-color;
   cursor: pointer;
 
   &__delete {
@@ -12,7 +13,7 @@
 
     button {
       padding: 5px;
-      background-color: $background-button-color;
+      background-color: $cities-background-button-color;
       border-radius: 8px;
       border: 1px solid transparent;
       padding: 0.3rem;

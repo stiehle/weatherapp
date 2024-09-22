@@ -1,0 +1,42 @@
+@import "./../src/styles/colors";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: light dark;
+  color: $index-font-color;
+  background-color: $index-background-color;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+a {
+  font-weight: 500;
+  color: $index-link-font-color;
+  text-decoration: inherit;
+}
+a:hover {
+  color: $index-link-hover-color;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: $index-media-font-color;
+    background-color: $index-media-background-color;
+  }
+  a:hover {
+    color: $index-media-link-font-color;
+  }
+  
+}

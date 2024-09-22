@@ -22,11 +22,11 @@ function CityHeader() {
 
           <div className="city-header__weathertemp">
             <p>
-              <FaTemperatureHigh />
+              <FaTemperatureHigh className="icon-high" />
               {weather.weatherData.forecast.forecastday[0].day.maxtemp_c}
             </p>
             <p>
-              <FaTemperatureLow />
+              <FaTemperatureLow className="icon-low" />
               {weather.weatherData.forecast.forecastday[0].day.mintemp_c}
             </p>
           </div>

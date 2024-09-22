@@ -1,6 +1,7 @@
 // import { IconName } from "react-icons/cg";
 import "./MultiButton.scss";
 import IconButton from "../iconbutton/IconButton";
+import { useEffect } from "react";
 
 type multiButton = {
   citiesEdit: boolean;
@@ -12,6 +13,10 @@ type multiButton = {
 };
 
 function MultiButton({ showSearchWindow, setShowSearchWindow, citiesEdit, setCitiesEditMode, setInputValue }: multiButton) {
+  useEffect(() => {
+    setCitiesEditMode(false);
+  }, [showSearchWindow]);
+
   function handleClick() {
     if (showSearchWindow) {
       setShowSearchWindow(false);
@@ -28,7 +33,7 @@ function MultiButton({ showSearchWindow, setShowSearchWindow, citiesEdit, setCit
     <>
       {showSearchWindow ? (
         <>
-          {setCitiesEditMode(false)}
+          {/* {setCitiesEditMode(false)} */}
           <IconButton buttonFunction={"cancel"} buttonClick={handleClick} buttonText={"Abbruch"} />
         </>
       ) : citiesEdit ? (

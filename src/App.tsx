@@ -1,4 +1,4 @@
-import "./App.css";
+import "./App.scss";
 import ErrorPage from "./routes/error/ErrorPage";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Main from "./routes/main/Main";

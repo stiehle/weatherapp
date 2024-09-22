@@ -1,18 +1,40 @@
+$index-font-color: #ffffff;
+$index-background-color: #242424;
+$index-link-font-color: #c0c0c0;
+$index-link-hover-color: #ff0000;
+$index-media-font-color: #213547;
+$index-media-background-color: #ffffff;
+$index-media-link-font-color: #ff0000;
+
 $main-font-color: #ffffff;
 $main-background-color: #1b3e61;
 $main-icon-color: #d2d4e9;
 
-$background-cities-color: #494e4c;
-$background-button-color: #ff0000;
+// $background-cities-color: #494e4c;
+// $background-button-color: #ff0000;
 
-$header-font-color: #000000;
-$header-font-shadow-color: #330b0b;
+// $header-font-color: #271111;
+$header-font-shadow-color: #000000;
 
 $city-information-border: #586679;
-$city-information-hour-font: #070707;
 $city-primary-color: #000000;
 $city-secondary-color: #ffffff;
 $city-navigation-font-color: #ffe600;
+
+// $city-shadow-font-color: #000000;
+// $city-shadow-font-night-color: #fbff00;
+
+$city-header-font-color: #ffffff;
+$city-header-font-shadow-color: #252525;
+
+$city-header-icon-color: #ffffff;
+$city-header-icon-shadow-high-color: #ff0000;
+$city-header-icon-shadow-low-color: #0026ff;
+$city-airquality-border-color: #586679;
+
+$cities-background-color: #494e4c;
+$cities-item-font-shadow-color: #f5f5f5;
+$cities-background-button-color: #ff0000;
 
 $searchbar-border-color: #ffffff;
 $searchbar-background-color: #ffffff;
@@ -22,8 +44,6 @@ $searchbar-button-hover-color: #2468e7;
 $searchbar-button-hover-font-color: #ffffff;
 $searchbar-iconbutton-hover-background-color: #e2e2e2;
 $searchbar-iconbutton-hover-font-color: #ff0000;
-
-$city-airquality-border-color: #586679;
 
 $footer-font-copyright-color: #ffffff;
 $footer-font-links-color: #ffffff;

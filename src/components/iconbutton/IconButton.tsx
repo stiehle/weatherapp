@@ -39,7 +39,7 @@ function IconButton({ buttonFunction, buttonClick, buttonText }: iconButton) {
 
   function selectIcon() {
     const icon = iconStock.find((iconName) => iconName.name === buttonFunction);
-    console.log(icon);
+    // console.log(icon);
 
     return <>{icon && icon.iconSymbol}</>;
   }
