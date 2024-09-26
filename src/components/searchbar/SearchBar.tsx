@@ -1,9 +1,8 @@
 import "./SearchBar.scss";
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { searchCity } from "../../utils/weatherapi";
 import { useNavigate } from "react-router-dom";
 import IconButton from "../iconbutton/IconButton";
-import { debounce } from "../../utils/debounce";
 
 type city = {
   id: number;
