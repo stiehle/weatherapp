@@ -1,8 +1,9 @@
 import "./SearchBar.scss";
-import { ChangeEvent, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 import { searchCity } from "../../utils/weatherapi";
 import { useNavigate } from "react-router-dom";
 import IconButton from "../iconbutton/IconButton";
+import { debounce } from "../../utils/debounce";
 
 type city = {
   id: number;
@@ -28,10 +29,21 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
 
   const navigate = useNavigate();
 
-  async function searchTheCities(cityId: string) {
-    const foundCities: city[] = await searchCity(cityId);
-    setCitiesList(foundCities);
-  }
+  // const [debouncedInputValue, setDebouncedInputValue] = useState<string>("");
+
+  // useEffect(() => {
+  //   const timeoutId = setTimeout(() => {
+  //     console.log("debounce useEffect", debouncedInputValue);
+  //     if (debouncedInputValue) searchTheCities(debouncedInputValue);
+  //   }, 500);
+  //   return () => clearTimeout(timeoutId);
+  // }, [debouncedInputValue, 500]);
+
+  // async function searchTheCities(cityName: string) {
+  //   console.log("city", cityName);
+  //   const foundCities: city[] = await searchCity(cityName);
+  //   setCitiesList(foundCities);
+  // }
 
   function showCitiesList() {
     function selectCity(id: number) {
@@ -76,11 +88,18 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
     }
   }
 
+  async function searchTheCities(cityName: string) {
+    // console.log("city", cityName);
+    const foundCities: city[] = await searchCity(cityName);
+    setCitiesList(foundCities);
+  }
+
   function handleInputChange(changeEvent: ChangeEvent<HTMLInputElement>) {
     setInputValue(changeEvent.target.value);
 
     if (changeEvent.target.value !== "") {
       searchTheCities(changeEvent.target.value);
+
       setShowSearchWindow(true);
     } else {
       setShowSearchWindow(false);
@@ -91,6 +110,7 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
     <div className="searchbar">
       <div className="searchbar__wrapper">
         <label htmlFor="searchbar"></label>
+
         <input
           id="searchbar"
           className="searchbar__input-field"
@@ -100,6 +120,7 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
           value={inputValue}
           spellCheck="false"
         />
+
         {showSearchWindow && <div className="searchbar__search-window">{showCitiesList()}</div>}
       </div>
     </div>
