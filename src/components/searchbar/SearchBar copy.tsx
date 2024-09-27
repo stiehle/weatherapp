@@ -90,31 +90,28 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
 
   async function searchTheCities(cityName: string) {
     console.log("city", cityName);
-    if (cityName) {
-      const foundCities: city[] = await searchCity(cityName);
-      setCitiesList(foundCities);
-    }
+    const foundCities: city[] = await searchCity(cityName);
+    setCitiesList(foundCities);
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     console.log("handle", e);
     setInputValue(e.target.value);
+    handler(e);
 
-    if (e.target.value !== "") {
-      // searchTheCities(e.target.value);
-      inputHandler(e);
+    // if (changeEvent.target.value !== "") {
+    //   searchTheCities(changeEvent.target.value);
 
-      setShowSearchWindow(true);
-    } else {
-      setShowSearchWindow(false);
-    }
+    //   setShowSearchWindow(true);
+    // } else {
+    //   setShowSearchWindow(false);
+    // }
   }
 
-  const inputHandler = useMemo(
+  const handler = useMemo(
     () =>
       debounce((ev: ChangeEvent<HTMLInputElement>) => {
         console.log(ev);
-        searchTheCities(ev.target.value);
       }, 500),
     []
   );
@@ -133,6 +130,7 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
           value={inputValue}
           spellCheck="false"
         />
+        {inputValue}
 
         {showSearchWindow && <div className="searchbar__search-window">{showCitiesList()}</div>}
       </div>
