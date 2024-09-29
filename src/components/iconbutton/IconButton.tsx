@@ -39,7 +39,6 @@ function IconButton({ buttonFunction, buttonClick, buttonText }: iconButton) {
 
   function selectIcon() {
     const icon = iconStock.find((iconName) => iconName.name === buttonFunction);
-    // console.log(icon);
 
     return <>{icon && icon.iconSymbol}</>;
   }
@@ -52,7 +51,6 @@ function IconButton({ buttonFunction, buttonClick, buttonText }: iconButton) {
   }
 
   return (
-    // <IconContext.Provider value={{ size: "25px" }}>
     <>
       <IconContext.Provider value={{ className: "iconButton__icon", size: selectIconSize() }}>
         <button onClick={buttonClick} className="iconButton">

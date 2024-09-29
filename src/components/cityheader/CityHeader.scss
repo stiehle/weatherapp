@@ -18,7 +18,6 @@
   }
 
   &__location {
-    // text-shadow: 1px 1px $header-font-shadow-color;
     font-size: 2.5rem;
   }
 
@@ -34,18 +33,13 @@
   }
 
   &__temp {
-    // text-shadow: 1px 1px $header-font-shadow-color;
-
     &::after {
       content: "°";
     }
   }
 
   &__weathertext {
-    // text-shadow: 1px 1px $header-font-shadow-color;
-
     p {
-      // padding: 0.4rem;
       font-size: 1.3rem;
     }
   }

@@ -24,26 +24,7 @@ type searchWindow = {
 
 function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInputValue }: searchWindow) {
   const [citiesList, setCitiesList] = useState<city[]>();
-  // const [showSearchWindow, setShowSearchWindow] = useState(false);
-  // const [inputValue, setInputValue] = useState<string>("");
-
   const navigate = useNavigate();
-
-  // const [debouncedInputValue, setDebouncedInputValue] = useState<string>("");
-
-  // useEffect(() => {
-  //   const timeoutId = setTimeout(() => {
-  //     console.log("debounce useEffect", debouncedInputValue);
-  //     if (debouncedInputValue) searchTheCities(debouncedInputValue);
-  //   }, 500);
-  //   return () => clearTimeout(timeoutId);
-  // }, [debouncedInputValue, 500]);
-
-  // async function searchTheCities(cityName: string) {
-  //   console.log("city", cityName);
-  //   const foundCities: city[] = await searchCity(cityName);
-  //   setCitiesList(foundCities);
-  // }
 
   function showCitiesList() {
     function selectCity(id: number) {
@@ -68,8 +49,6 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
                 {city.name}, {city.country}
               </button>
               <div className="searchbar__city-link">
-                {/* <a href={getCityURL()} target="_blank"> */}
-
                 <IconButton
                   buttonFunction={"link"}
                   buttonClick={() => {
@@ -77,7 +56,6 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
                   }}
                   buttonText={city.url}
                 />
-                {/* search: {city.url} */}
               </div>
             </div>
           );
@@ -89,7 +67,6 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
   }
 
   async function searchTheCities(cityName: string) {
-    console.log("city", cityName);
     if (cityName) {
       const foundCities: city[] = await searchCity(cityName);
       setCitiesList(foundCities);
@@ -97,12 +74,10 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
   }
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
-    console.log("handle", e);
     setInputValue(e.target.value);
 
     if (e.target.value !== "") {
-      // searchTheCities(e.target.value);
-      inputHandler(e);
+      handleSearch(e);
 
       setShowSearchWindow(true);
     } else {
@@ -110,11 +85,10 @@ function SearchBar({ showSearchWindow, setShowSearchWindow, inputValue, setInput
     }
   }
 
-  const inputHandler = useMemo(
+  const handleSearch = useMemo(
     () =>
-      debounce((ev: ChangeEvent<HTMLInputElement>) => {
-        console.log(ev);
-        searchTheCities(ev.target.value);
+      debounce((e: ChangeEvent<HTMLInputElement>) => {
+        searchTheCities(e.target.value);
       }, 500),
     []
   );

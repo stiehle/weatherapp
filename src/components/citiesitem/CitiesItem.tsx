@@ -33,12 +33,6 @@ function CitiesItem({ edit }: mode) {
         }}>
         {edit && (
           <div className="cities-item__delete">
-            {/* <button
-              onClick={() => {
-                buttonDeleteCity(city);
-              }}>
-              Löschen
-            </button> */}
             <IconButton
               buttonFunction={"trash"}
               buttonClick={() => {

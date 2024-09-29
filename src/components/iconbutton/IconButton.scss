@@ -1,3 +1,5 @@
+@import "../../styles/colors";
+
 .iconButton {
   font-size: 1rem;
   font-family: inherit;
@@ -6,26 +8,26 @@
   background-color: transparent;
   border: none;
   cursor: pointer;
-  color: #d2d4e9;
+  color: $iconbutton-font-color;
 
   &__icon {
     vertical-align: middle;
     padding-right: 0.2rem;
 
     &--white {
-      color: #d2d4e9;
+      color: $iconbutton-icon-white;
     }
 
     &--red {
-      color: #ff0000;
+      color: $iconbutton-icon-red;
     }
 
     &--green {
-      color: #00ff00;
+      color: $iconbutton-icon-green;
     }
 
     &--black {
-      color: #000000;
+      color: $iconbutton-icon-black;
     }
   }
 }
