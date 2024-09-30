@@ -34,7 +34,11 @@ function CityInformation() {
         <p>
           {dateTimeTimeline.day}.{dateTimeTimeline.month}
         </p>
-        <p>{localTime.hour === dateTimeTimeline.hour ? "Jetzt" : `${dateTimeTimeline.hour + ":" + dateTimeTimeline.minute}`}</p>
+        <p>
+          {localTime.hour + localTime.day === dateTimeTimeline.hour + dateTimeTimeline.day
+            ? "Jetzt"
+            : `${dateTimeTimeline.hour + ":" + dateTimeTimeline.minute}`}
+        </p>
       </>
     );
   }
