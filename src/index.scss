@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+::-webkit-scrollbar {
+  width: 0;
+}
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -38,5 +42,4 @@ h1 {
   a:hover {
     color: $index-media-link-font-color;
   }
-  
 }
